@@ -1,0 +1,61 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="IA">
+  <section class="section">
+    <div class="container">
+      <a class="back-link" href="/#ia">← Retour</a>
+      <h1>Comment j'utilise l'IA dans mon travail</h1>
+      <p class="intro">
+        Les outils, workflows et exemples concrets qui font gagner du temps et
+        de la qualité dans mes projets de copywriting.
+      </p>
+
+      <div class="ia-grid">
+        <div class="placeholder">
+          <strong>Outils utilisés</strong>
+          Contenu à venir
+        </div>
+        <div class="placeholder">
+          <strong>Workflows</strong>
+          Contenu à venir
+        </div>
+        <div class="placeholder">
+          <strong>Exemples concrets</strong>
+          Contenu à venir
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-block;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    margin-bottom: 24px;
+  }
+
+  .back-link:hover {
+    color: var(--color-text);
+  }
+
+  .intro {
+    max-width: 50ch;
+    font-size: 18px;
+    margin-bottom: 48px;
+  }
+
+  .ia-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .ia-grid .placeholder {
+    min-height: 120px;
+  }
+</style>

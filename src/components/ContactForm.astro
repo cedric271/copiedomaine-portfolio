@@ -1,0 +1,109 @@
+---
+---
+
+<form class="contact-form" id="contact-form">
+  <label>
+    Nom
+    <input type="text" name="name" required />
+  </label>
+  <label>
+    Adresse courriel
+    <input type="email" name="email" required />
+  </label>
+  <label>
+    Message
+    <textarea name="message" rows="6" required></textarea>
+  </label>
+  <button class="btn btn-primary" type="submit">Envoyer la demande</button>
+  <p class="contact-form__status" role="status" aria-live="polite"></p>
+</form>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const status = form?.querySelector(".contact-form__status");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!status) return;
+
+    const submitButton = form.querySelector("button[type=submit]") as HTMLButtonElement;
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    submitButton.disabled = true;
+    status.textContent = "Envoi en cours…";
+    status.className = "contact-form__status";
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) throw new Error("Request failed");
+
+      status.textContent = "Message envoyé — je te réponds rapidement.";
+      status.className = "contact-form__status contact-form__status--success";
+      form.reset();
+    } catch (error) {
+      status.textContent = "Une erreur est survenue. Réessaie ou écris-moi directement par email.";
+      status.className = "contact-form__status contact-form__status--error";
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+</script>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-family: var(--font-body);
+    font-size: 16px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1.5px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    resize: vertical;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--color-text);
+  }
+
+  .contact-form button {
+    align-self: flex-start;
+    margin-top: 8px;
+  }
+
+  .contact-form__status {
+    font-size: 14px;
+    min-height: 1.2em;
+    color: var(--color-text-secondary);
+  }
+
+  .contact-form__status--success {
+    color: #3f7a1f;
+  }
+
+  .contact-form__status--error {
+    color: #b3261e;
+  }
+</style>

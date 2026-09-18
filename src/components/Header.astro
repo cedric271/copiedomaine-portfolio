@@ -1,0 +1,72 @@
+---
+const navItems = [
+  { href: "/#accueil", label: "Accueil" },
+  { href: "/#travaux", label: "Travaux" },
+  { href: "/#ia", label: "IA" },
+  { href: "/#contact", label: "Contact" },
+];
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <span class="site-header__logo">Copiedomaine</span>
+    <nav class="site-header__nav">
+      {navItems.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+    <a class="btn btn-primary site-header__cta" href="/#calendly">Réserver un appel</a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .site-header__logo {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  .site-header__nav {
+    display: flex;
+    gap: 32px;
+  }
+
+  .site-header__nav a {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    font-size: 15px;
+  }
+
+  .site-header__nav a:hover {
+    color: var(--color-text);
+  }
+
+  .site-header__cta {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 700px) {
+    .site-header__nav {
+      display: none;
+    }
+  }
+</style>

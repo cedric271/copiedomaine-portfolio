@@ -1,0 +1,219 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.astro";
+import { clients } from "../data/clients";
+---
+
+<Layout title="Accueil">
+  <section id="accueil" class="hero">
+    <div class="container">
+      <h1>Copywriter BtoB <span class="hero__sep">|</span> Bras droit marketing</h1>
+      <p class="hero__subtitle">
+        J'accompagne les entreprises à clarifier leur message, développer leur
+        visibilité et transformer leur expertise en contenu marketing.
+      </p>
+      <p class="hero__services">
+        VSL (vidéo de vente), publicité, tunnels de vente, réseaux sociaux, emailing.
+      </p>
+      <a class="btn btn-primary" href="#calendly">Réserver un appel</a>
+    </div>
+  </section>
+
+  <section id="travaux" class="section-tight">
+    <div class="container">
+      <h2>Projets récents</h2>
+      <div class="client-grid">
+        {clients.map((client) => (
+          <a class="client-card" href={`/travaux/${client.slug}`}>
+            <strong>{client.name}</strong>
+            <span>Étude de cas à venir →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="ia" class="section-tight">
+    <div class="container">
+      <h2>Comment j'utilise l'IA dans mon travail</h2>
+      <a class="ia-card" href="/ia">
+        <strong>Workflows, outils et exemples concrets</strong>
+        <span>Contenu à venir →</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Parlons de votre projet</h2>
+
+      <div class="contact-grid">
+        <div id="calendly" class="contact-grid__col">
+          <h3>Réserver un appel</h3>
+          <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/cedric-copiedomaine/45min"
+            style="min-width:320px;height:700px;"
+          >
+          </div>
+        </div>
+
+        <div class="contact-grid__col">
+          <h3>Envoyer une demande</h3>
+          <ContactForm />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</Layout>
+
+<style>
+  #accueil,
+  #travaux,
+  #ia,
+  #contact {
+    scroll-margin-top: 96px;
+  }
+
+  #travaux h2,
+  #ia h2,
+  #contact h2 {
+    text-align: center;
+  }
+
+  .hero {
+    padding: 60px 0 80px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    max-width: 16ch;
+  }
+
+  .hero__sep {
+    color: var(--color-text-secondary);
+    font-weight: 400;
+  }
+
+  .hero__subtitle {
+    font-size: 20px;
+    color: var(--color-text);
+    max-width: 44ch;
+    margin-top: 24px;
+  }
+
+  .hero__services {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    margin-bottom: 40px;
+  }
+
+  .client-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  .client-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    min-height: 160px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 28px;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .client-card:hover {
+    border-color: var(--color-text);
+    transform: translateY(-2px);
+  }
+
+  .client-card strong {
+    font-family: var(--font-heading);
+    font-size: 20px;
+  }
+
+  .client-card span {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+  }
+
+  .ia-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    min-height: 160px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 28px;
+    text-decoration: none;
+    color: var(--color-text);
+    margin-top: 32px;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .ia-card:hover {
+    border-color: var(--color-text);
+    transform: translateY(-2px);
+  }
+
+  .ia-card strong {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    max-width: 40ch;
+  }
+
+  .ia-card span {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    margin-top: 40px;
+    align-items: start;
+  }
+
+  .contact-grid__col {
+    min-width: 0;
+  }
+
+  .contact-grid__col h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .calendly-inline-widget {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  @media (max-width: 800px) {
+    .client-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .section {
+      padding: 64px 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
