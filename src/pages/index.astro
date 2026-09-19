@@ -7,7 +7,11 @@ import { clients } from "../data/clients";
 <Layout title="Accueil">
   <section id="accueil" class="hero">
     <div class="container">
-      <h1>Portfolio Copywriter BtoB <span class="hero__sep">|</span><br />Bras droit marketing</h1>
+      <h1>
+        <span class="hero__kicker">Portfolio de Cédric Deneux</span>
+        Copywriter BtoB <span class="hero__sep">|</span><br />
+        Bras droit marketing
+      </h1>
       <p class="hero__subtitle">
         J'accompagne les entreprises à clarifier leur message, développer leur
         visibilité et transformer leur expertise en contenu marketing.
@@ -25,8 +29,14 @@ import { clients } from "../data/clients";
       <div class="client-grid">
         {clients.map((client) => (
           <a class="client-card" href={`/travaux/${client.slug}`}>
-            <strong>{client.name}</strong>
-            <span>Étude de cas à venir →</span>
+            <div class="client-card__top">
+              <strong>{client.name}</strong>
+              {client.logo && (
+                <img class="client-card__logo" src={client.logo} alt={`Logo ${client.name}`} loading="lazy" />
+              )}
+              {client.description && <p class="client-card__description">{client.description}</p>}
+            </div>
+            <span>Voir →</span>
           </a>
         ))}
       </div>
@@ -35,7 +45,7 @@ import { clients } from "../data/clients";
 
   <section id="ia" class="section-tight">
     <div class="container">
-      <h2>Comment j'utilise l'IA dans mon travail</h2>
+      <h2>Comment j'utilise l'IA pour votre projet</h2>
       <a class="ia-card" href="/ia">
         <strong>Workflows, outils et exemples concrets</strong>
         <span>Contenu à venir →</span>
@@ -106,6 +116,17 @@ import { clients } from "../data/clients";
     max-width: 28ch;
   }
 
+  .hero__kicker {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: normal;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: 12px;
+  }
+
   .hero__sep {
     color: var(--color-text-secondary);
     font-weight: 400;
@@ -134,15 +155,17 @@ import { clients } from "../data/clients";
   .client-card {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-between;
-    gap: 40px;
-    min-height: 160px;
+    gap: 24px;
+    min-height: 240px;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: 28px;
     text-decoration: none;
     color: var(--color-text);
+    text-align: center;
     transition: border-color 0.15s ease, transform 0.15s ease;
   }
 
@@ -151,9 +174,28 @@ import { clients } from "../data/clients";
     transform: translateY(-2px);
   }
 
+  .client-card__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .client-card__logo {
+    width: 140px;
+    height: 56px;
+    object-fit: contain;
+  }
+
   .client-card strong {
     font-family: var(--font-heading);
     font-size: 20px;
+  }
+
+  .client-card__description {
+    margin: 0;
+    font-size: 14px;
+    color: var(--color-text-secondary);
   }
 
   .client-card span {

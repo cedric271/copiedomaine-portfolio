@@ -23,3 +23,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 .vercel
+
+# raw logo drop folder (source files; web-ready copies live in public/logos)
+/logos/
