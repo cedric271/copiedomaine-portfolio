@@ -7,49 +7,81 @@ export const quercusVslHtml = `
 
 <hr class="script-divider" />
 
-<p>Cette entreprise de logistique perdait </p>
+<div class="hooks">
 
-<p>180 000€ par an sans le savoir.</p>
+<div class="hook">
 
-<p>Voici comment nous avons identifié les fuites en 3 semaines… sans bouleverser leur organisation, et sans faire appel à un cabinet d&#39;audit hors de prix.</p>
+<p class="hook-headline">Cette entreprise de logistique perdait </p>
 
-<p>Voici comment cette PME dans le BTP </p>
+<p class="hook-headline">180 000€ par an sans le savoir.</p>
 
-<p>a augmenté sa marge opérationnelle </p>
+<p class="hook-subline">Voici comment nous avons identifié les fuites en 3 semaines… sans bouleverser leur organisation, et sans faire appel à un cabinet d&#39;audit hors de prix.</p>
 
-<p>de 26% en 6 mois : .</p>
+</div>
 
-<p>Cette PME industrielle a augmenté sa valorisation de 420 000€ en vue d&#39;une transmission.</p>
+<div class="hook">
 
-<p>Sans recruter de directeur financier et en seulement 7 mois.</p>
+<p class="hook-headline">Voici comment cette PME dans le BTP </p>
 
-<p>Voici comment ce cabinet de conseil </p>
+<p class="hook-headline">a augmenté sa marge opérationnelle </p>
 
-<p>a dégagé 250 000€ de trésorerie </p>
+<p class="hook-headline">de 26% en 6 mois : .</p>
 
-<p>supplémentaire en 5 mois.</p>
+</div>
 
-<p>Sans couper dans les effectifs et sans augmenter les prix.</p>
+<div class="hook">
 
-<p>Cette dirigeante a arrêté de prendre </p>
+<p class="hook-headline">Cette PME industrielle a augmenté sa valorisation de 420 000€ en vue d&#39;une transmission.</p>
 
-<p>des décisions à l&#39;aveugle après 12 ans </p>
+<p class="hook-subline">Sans recruter de directeur financier et en seulement 7 mois.</p>
 
-<p>à la tête de son entreprise.</p>
+</div>
 
-<p>Sans recruter en interne, sans changer d&#39;expert-comptable… et en gardant le contrôle total de sa stratégie.</p>
+<div class="hook">
 
-<p>Voici comment cette entreprise BTP prend maintenant toutes ses décisions </p>
+<p class="hook-headline">Voici comment ce cabinet de conseil </p>
 
-<p>stratégiques en moins de 48h.</p>
+<p class="hook-headline">a dégagé 250 000€ de trésorerie </p>
 
-<p>Sans multiplier les réunions et avec des chiffres fiables en temps réel.</p>
+<p class="hook-headline">supplémentaire en 5 mois.</p>
 
-<p>Cette PME pensait que sa gamme premium était rentable. Elle perdait en réalité 95 000€ par an.</p>
+<p class="hook-subline">Sans couper dans les effectifs et sans augmenter les prix.</p>
 
-<p>Voici comment nous avons retourné la situation en 3 mois…</p>
+</div>
 
-<p>(sans arrêter la production et sans licencier)</p>
+<div class="hook">
+
+<p class="hook-headline">Cette dirigeante a arrêté de prendre </p>
+
+<p class="hook-headline">des décisions à l&#39;aveugle après 12 ans </p>
+
+<p class="hook-headline">à la tête de son entreprise.</p>
+
+<p class="hook-subline">Sans recruter en interne, sans changer d&#39;expert-comptable… et en gardant le contrôle total de sa stratégie.</p>
+
+</div>
+
+<div class="hook">
+
+<p class="hook-headline">Voici comment cette entreprise BTP prend maintenant toutes ses décisions </p>
+
+<p class="hook-headline">stratégiques en moins de 48h.</p>
+
+<p class="hook-subline">Sans multiplier les réunions et avec des chiffres fiables en temps réel.</p>
+
+</div>
+
+<div class="hook">
+
+<p class="hook-headline">Cette PME pensait que sa gamme premium était rentable. Elle perdait en réalité 95 000€ par an.</p>
+
+<p class="hook-subline">Voici comment nous avons retourné la situation en 3 mois…</p>
+
+<p class="hook-subline">(sans arrêter la production et sans licencier)</p>
+
+</div>
+
+</div>
 
 <hr class="script-divider" />
 
