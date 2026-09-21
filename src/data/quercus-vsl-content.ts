@@ -131,7 +131,9 @@ export const quercusVslHtml = `
 
 <p>Sa marge opérationnelle a augmenté de +26%. </p>
 
-<p><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+<p class="script-centered"><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+
+<img class="script-image" src="/case-studies/quercus/quercus-vsl-1.png" alt="Capture d'écran — script VSL Quercus Gestion" loading="lazy" />
 
 <p>Les décisions sont déléguées et parfaitement optimisées grâce à un COMEX mensuel.</p>
 
@@ -335,7 +337,9 @@ export const quercusVslHtml = `
 
 <p>🔵  Un prévisionnel de trésorerie sur 18 mois.</p>
 
-<p><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+<p class="script-centered"><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+
+<img class="script-image" src="/case-studies/quercus/quercus-vsl-2.png" alt="Capture d'écran — script VSL Quercus Gestion" loading="lazy" />
 
 <p>Un tableau simple qui vous dit, mois par mois :</p>
 
@@ -361,7 +365,9 @@ export const quercusVslHtml = `
 
 <p>🔵 Un pilotage en temps réel dès le démarrage du projet.</p>
 
-<p><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+<p class="script-centered"><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+
+<img class="script-image" src="/case-studies/quercus/quercus-vsl-3.jpg" alt="Capture d'écran — script VSL Quercus Gestion" loading="lazy" />
 
 <p>Car même si le contrat avait été bien calibré dès le départ, il aurait dû suivre la rentabilité réelle semaine après semaine…</p>
 
@@ -393,7 +399,9 @@ export const quercusVslHtml = `
 
 <h3>+30% de valorisation de l’activité.</h3>
 
-<p><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+<p class="script-centered"><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+
+<img class="script-image" src="/case-studies/quercus/quercus-vsl-4.jpg" alt="Capture d'écran — script VSL Quercus Gestion" loading="lazy" />
 
 <p>Thomas est le dirigeant d’une menuiserie industrielle de 65 salariés avec un CA de 8,5 M€.</p>
 
@@ -453,7 +461,9 @@ export const quercusVslHtml = `
 
 <h3>par 4 le temps passé dans l’opérationnel.</h3>
 
-<p><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+<p class="script-centered"><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+
+<img class="script-image" src="/case-studies/quercus/quercus-vsl-5.jpg" alt="Capture d'écran — script VSL Quercus Gestion" loading="lazy" />
 
 <p>Au départ, chaque magasin fonctionnait différemment. Avec ses propres fichiers Excel et ses priorités.</p>
 
@@ -553,7 +563,9 @@ export const quercusVslHtml = `
 
 <p>C’est comme ça que Quercus Gestion est né. </p>
 
-<p><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+<p class="script-centered"><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+
+<img class="script-image" src="/case-studies/quercus/quercus-vsl-6.jpg" alt="Capture d'écran — script VSL Quercus Gestion" loading="lazy" />
 
 <p>Pour être le copilote financier, stratégique et organisationnel que tout dirigeant mérite.</p>
 
@@ -561,11 +573,13 @@ export const quercusVslHtml = `
 
 <h3>quand on entre dans votre entreprise : </h3>
 
-<p>📍 Mois 1 : </p>
+<p class="script-label">📍 Mois 1 : </p>
 
-<p>Le diagnostic </p>
+<p class="script-label">Le diagnostic </p>
 
-<p><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+<p class="script-centered"><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+
+<img class="script-image" src="/case-studies/quercus/quercus-vsl-7.jpg" alt="Capture d'écran — script VSL Quercus Gestion" loading="lazy" />
 
 <p>On réalise un audit financier et organisationnel complet.</p>
 
@@ -603,11 +617,13 @@ export const quercusVslHtml = `
 
 <p>Vous voyez ce qui marche, ce qui bloque, et où agir en priorité.</p>
 
-<p>📍 Mois 2 et 3 : </p>
+<p class="script-label">📍 Mois 2 et 3 : </p>
 
-<p>On structure le pilotage</p>
+<p class="script-label">On structure le pilotage</p>
 
-<p><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+<p class="script-centered"><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+
+<img class="script-image" src="/case-studies/quercus/quercus-vsl-8.jpg" alt="Capture d'écran — script VSL Quercus Gestion" loading="lazy" />
 
 <p>Là, on passe à l’action et on met en place les outils qui vous manquent pour piloter.</p>
 
@@ -646,11 +662,13 @@ export const quercusVslHtml = `
 
 <p>Et vous ne pilotez plus au feeling. Mais avec des chiffres fiables et en temps réel.</p>
 
-<p>📍 Mois 4 à 6 : </p>
+<p class="script-label">📍 Mois 4 à 6 : </p>
 
-<p>On installe le rythme</p>
+<p class="script-label">On installe le rythme</p>
 
-<p><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+<p class="script-centered"><mark class="hl hl--direction">//Afficher à l’écran//</mark></p>
+
+<img class="script-image" src="/case-studies/quercus/quercus-vsl-9.jpg" alt="Capture d'écran — script VSL Quercus Gestion" loading="lazy" />
 
 <p>On ne vous laisse pas seul avec les nouveaux outils.</p>
 

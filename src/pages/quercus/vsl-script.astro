@@ -59,9 +59,36 @@ import { quercusVslHtml } from "../../data/quercus-vsl-content";
   }
 
   .doc-content :global(h3) {
-    font-size: 17px;
-    font-weight: 600;
-    margin: 24px 0 4px;
+    font-family: "Raleway", sans-serif;
+    font-size: 18pt;
+    font-weight: 900;
+    color: #38761d;
+    text-align: center;
+    line-height: 1.25;
+    margin: 32px 0 16px;
+  }
+
+  .doc-content :global(.script-label) {
+    font-family: "Raleway", sans-serif;
+    font-size: 14pt;
+    font-weight: 800;
+    font-style: italic;
+    color: #000000;
+    text-align: center;
+    margin: 32px 0 4px;
+  }
+
+  .doc-content :global(.script-centered) {
+    text-align: center;
+  }
+
+  .doc-content :global(.script-image) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 16px auto 24px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
   }
 
   .doc-content :global(p) {
