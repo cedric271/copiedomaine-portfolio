@@ -1,8 +1,27 @@
+export interface CaseStudyImage {
+  src: string;
+  alt: string;
+}
+
+export interface CaseStudyLink {
+  label: string;
+  url: string;
+}
+
+export interface CaseStudy {
+  context: string[];
+  actions: string[];
+  result: string[];
+  resultImages?: CaseStudyImage[];
+  resultLinks?: CaseStudyLink[];
+}
+
 export interface Client {
   slug: string;
   name: string;
   description?: string;
   logo?: string;
+  caseStudy?: CaseStudy;
 }
 
 export const clients: Client[] = [
@@ -15,7 +34,7 @@ export const clients: Client[] = [
   {
     slug: "groupe-mg-marketing",
     name: "Groupe M&G Marketing",
-    description: "Centre d'appels et organisation de ventes privés dans l'automobile.",
+    description: "Centre d'appels et organisation de ventes privées dans l'automobile.",
     logo: "/logos/groupe-mg-marketing.gif",
   },
   {
@@ -37,7 +56,30 @@ export const clients: Client[] = [
   {
     slug: "creativminds",
     name: "CreativMinds",
-    description: "Consulting en gestion de projets.",
+    description: "Consulting en transformation digitale et business analyse.",
     logo: "/logos/creativminds.jpg",
+    caseStudy: {
+      context: [
+        "CreativMinds est une entreprise de conseil spécialisée dans la transformation digitale.",
+        "L'entreprise voulait vendre son produit mais n'avait aucune idée de comment faire.",
+      ],
+      actions: [
+        "Pour vendre le produit (physique et digital), j'ai d'abord créé une offre type <strong>tiered offer</strong> avec 3 offres possibles : 69€, 89€ et 97€.",
+        "J'ai ensuite mis en place une <strong>landing page</strong> avec un <strong>bon de commande</strong> et une <strong>page de remerciement</strong> pour vendre l'offre directement sur son site.",
+        "Enfin, l'entreprise avait besoin de visibilité, avant tout. Nous avons donc fait du <strong>ghostwriting sur LinkedIn</strong> pour développer l'acquisition de prospects et les réorienter vers la landing page.",
+      ],
+      result: [
+        "En moins d'un mois, ma cliente a vendu pour presque 900€ de produit et a pu rembourser le prix de sa prestation.",
+      ],
+      resultImages: [
+        { src: "/case-studies/creativminds-1.png", alt: "Statistiques de ventes du Deck BADASS — CreativMinds" },
+        { src: "/case-studies/creativminds-2.png", alt: "Liste des commandes du Deck BADASS — CreativMinds" },
+      ],
+      resultLinks: [
+        { label: "Voir la landing page", url: "/case-studies/creativminds/landing-page.html" },
+        { label: "Voir le bon de commande", url: "/case-studies/creativminds/bon-de-commande.html" },
+        { label: "Voir la page de remerciement", url: "/case-studies/creativminds/page-de-remerciement.html" },
+      ],
+    },
   },
 ];

@@ -19,7 +19,7 @@ import { clients } from "../data/clients";
       <p class="hero__services">
         VSL (vidéo de vente), publicité, tunnels de vente, réseaux sociaux, emailing.
       </p>
-      <a class="btn btn-primary" href="#calendly">Réserver un appel</a>
+      <a class="btn btn-primary" href="#contact">Réserver un appel</a>
     </div>
   </section>
 
@@ -28,7 +28,7 @@ import { clients } from "../data/clients";
       <h2>Projets récents</h2>
       <div class="client-grid">
         {clients.map((client) => (
-          <a class="client-card" href={`/travaux/${client.slug}`}>
+          <button type="button" class="client-card" data-modal-target={`modal-${client.slug}`}>
             <div class="client-card__top">
               <strong>{client.name}</strong>
               {client.logo && (
@@ -37,11 +37,87 @@ import { clients } from "../data/clients";
               {client.description && <p class="client-card__description">{client.description}</p>}
             </div>
             <span>Voir →</span>
-          </a>
+          </button>
         ))}
       </div>
     </div>
   </section>
+
+  {clients.map((client) => (
+    <dialog id={`modal-${client.slug}`} class="case-modal">
+      <button type="button" class="case-modal__close" data-modal-close aria-label="Fermer">×</button>
+      <div class="case-modal__header">
+        <h3>{client.name}</h3>
+        {client.logo && (
+          <img class="case-modal__logo" src={client.logo} alt={`Logo ${client.name}`} loading="lazy" />
+        )}
+      </div>
+
+      {client.caseStudy ? (
+        <div class="case-modal__body">
+          <div class="case-modal__section">
+            <h4>Contexte</h4>
+            {client.caseStudy.context.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+          <div class="case-modal__section">
+            <h4>Ce qui a été fait</h4>
+            <ol>
+              {client.caseStudy.actions.map((action) => <li set:html={action} />)}
+            </ol>
+          </div>
+          <div class="case-modal__section">
+            <h4>Résultat</h4>
+            {client.caseStudy.result.map((paragraph) => <p>{paragraph}</p>)}
+            {client.caseStudy.resultImages && (
+              <div class="case-modal__images">
+                {client.caseStudy.resultImages.map((image) => (
+                  <button
+                    type="button"
+                    class="case-modal__thumb"
+                    data-lightbox-src={image.src}
+                    data-lightbox-alt={image.alt}
+                  >
+                    <img src={image.src} alt={image.alt} loading="lazy" />
+                  </button>
+                ))}
+              </div>
+            )}
+            {client.caseStudy.resultLinks && (
+              <ul class="case-modal__links">
+                {client.caseStudy.resultLinks.map((link) => (
+                  <li>
+                    <a href={link.url} target="_blank" rel="noopener noreferrer">
+                      {link.label} →
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div class="case-modal__body">
+          <div class="case-modal__section">
+            <h4>Contexte</h4>
+            <p class="case-modal__placeholder">Contenu à venir</p>
+          </div>
+          <div class="case-modal__section">
+            <h4>Ce qui a été fait</h4>
+            <p class="case-modal__placeholder">Contenu à venir</p>
+          </div>
+          <div class="case-modal__section">
+            <h4>Résultat</h4>
+            <p class="case-modal__placeholder">Contenu à venir</p>
+          </div>
+        </div>
+      )}
+    </dialog>
+  ))}
+
+  <dialog id="lightbox" class="lightbox">
+    <button type="button" class="lightbox__close" data-modal-close aria-label="Fermer">×</button>
+    <img id="lightbox-img" src="" alt="" />
+  </dialog>
 
   <section id="ia" class="section-tight">
     <div class="container">
@@ -58,26 +134,76 @@ import { clients } from "../data/clients";
       <h2>Parlons de votre projet</h2>
 
       <div class="contact-grid">
-        <div id="calendly" class="contact-grid__col">
-          <h3>Réserver un appel</h3>
-          <div
-            class="calendly-inline-widget"
-            data-url="https://calendly.com/cedric-copiedomaine/45min"
-            style="min-width:320px;height:700px;"
-          >
-          </div>
-        </div>
-
         <div class="contact-grid__col">
           <h3>Envoyer une demande</h3>
           <ContactForm />
         </div>
+
+        <div class="contact-grid__col">
+          <h3>Contactez-moi sur mes réseaux</h3>
+          <div class="social-links">
+            <a
+              class="social-link"
+              href="https://www.instagram.com/copiedomaine/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a
+              class="social-link"
+              href="https://www.linkedin.com/in/cedric-deneux-copy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="2" y="2" width="20" height="20" rx="3" />
+                <line x1="7" y1="10" x2="7" y2="17" />
+                <line x1="7" y1="6.5" x2="7" y2="6.51" />
+                <path d="M11 17v-4.5a2.5 2.5 0 0 1 5 0V17" />
+                <line x1="11" y1="10" x2="11" y2="17" />
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-
-  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </Layout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-modal-target]").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const dialog = document.getElementById(trigger.dataset.modalTarget ?? "");
+      if (dialog instanceof HTMLDialogElement) dialog.showModal();
+    });
+  });
+
+  document.querySelectorAll<HTMLDialogElement>("dialog").forEach((dialog) => {
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    dialog.querySelector("[data-modal-close]")?.addEventListener("click", () => dialog.close());
+  });
+
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  document.querySelectorAll<HTMLButtonElement>("[data-lightbox-src]").forEach((thumb) => {
+    thumb.addEventListener("click", () => {
+      if (!(lightbox instanceof HTMLDialogElement) || !(lightboxImg instanceof HTMLImageElement)) return;
+      lightboxImg.src = thumb.dataset.lightboxSrc ?? "";
+      lightboxImg.alt = thumb.dataset.lightboxAlt ?? "";
+      lightbox.showModal();
+    });
+  });
+</script>
 
 <style>
   #accueil,
@@ -159,13 +285,16 @@ import { clients } from "../data/clients";
     justify-content: space-between;
     gap: 24px;
     min-height: 240px;
+    width: 100%;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: 28px;
+    font: inherit;
     text-decoration: none;
     color: var(--color-text);
     text-align: center;
+    cursor: pointer;
     transition: border-color 0.15s ease, transform 0.15s ease;
   }
 
@@ -252,9 +381,32 @@ import { clients } from "../data/clients";
     margin-bottom: 20px;
   }
 
-  .calendly-inline-widget {
-    width: 100% !important;
-    min-width: 0 !important;
+  .social-links {
+    display: flex;
+    gap: 16px;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-full);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .social-link svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .social-link:hover {
+    border-color: var(--color-text);
+    transform: translateY(-2px);
   }
 
   @media (max-width: 800px) {
@@ -270,6 +422,205 @@ import { clients } from "../data/clients";
   @media (max-width: 640px) {
     .contact-grid {
       grid-template-columns: 1fr;
+    }
+  }
+
+  .case-modal {
+    position: relative;
+    width: min(640px, 92vw);
+    max-height: 85vh;
+    overflow-y: auto;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 40px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    box-shadow: 0 20px 60px rgba(19, 42, 19, 0.2);
+  }
+
+  .case-modal::backdrop {
+    background: rgba(19, 42, 19, 0.55);
+  }
+
+  .case-modal__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .case-modal__close:hover {
+    border-color: var(--color-text);
+  }
+
+  .case-modal__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .case-modal__logo {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .case-modal__header h3 {
+    font-size: 22px;
+    margin: 0;
+  }
+
+  .case-modal__body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .case-modal__section h4 {
+    font-size: 20px;
+    color: var(--color-heading-accent);
+    margin: 0 0 10px;
+  }
+
+  .case-modal__section p,
+  .case-modal__section li {
+    font-size: 16px;
+    color: var(--color-text);
+  }
+
+  .case-modal__section p + p {
+    margin-top: 10px;
+  }
+
+  .case-modal__section ol {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .case-modal__placeholder {
+    color: var(--color-text-secondary);
+  }
+
+  .case-modal__images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 40px;
+  }
+
+  .case-modal__links {
+    list-style: none;
+    margin: 40px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .case-modal__links a {
+    font-size: 15px;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .case-modal__links a:hover {
+    text-decoration: underline;
+  }
+
+  .case-modal__thumb {
+    width: 140px;
+    height: 100px;
+    padding: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: none;
+    cursor: pointer;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .case-modal__thumb:hover {
+    border-color: var(--color-text);
+    transform: translateY(-2px);
+  }
+
+  .case-modal__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .lightbox {
+    position: relative;
+    width: min(1000px, 92vw);
+    max-height: 90vh;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 0;
+    background: transparent;
+  }
+
+  .lightbox::backdrop {
+    background: rgba(19, 42, 19, 0.75);
+  }
+
+  .lightbox img {
+    display: block;
+    width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+  }
+
+  .lightbox__close {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .lightbox__close:hover {
+    border-color: var(--color-text);
+  }
+
+  @media (max-width: 640px) {
+    .case-modal {
+      padding: 28px;
+    }
+
+    .lightbox__close {
+      top: 8px;
+      right: 8px;
     }
   }
 </style>

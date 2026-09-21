@@ -16,29 +16,99 @@ const { client } = Astro.props;
   <section class="section">
     <div class="container">
       <a class="back-link" href="/#travaux">← Tous les projets</a>
-      <h1>{client.name}</h1>
 
-      <div class="case-grid">
-        <div class="placeholder">
-          <strong>Contexte</strong>
-          Contenu à venir
-        </div>
-        <div class="placeholder">
-          <strong>Ce qui a été fait</strong>
-          Contenu à venir
-        </div>
-        <div class="placeholder">
-          <strong>Résultats</strong>
-          Contenu à venir
-        </div>
-        <div class="placeholder">
-          <strong>Visuels</strong>
-          Contenu à venir
-        </div>
+      <div class="case-header">
+        {client.logo && <img class="case-header__logo" src={client.logo} alt={`Logo ${client.name}`} />}
+        <h1>{client.name}</h1>
       </div>
+
+      {client.caseStudy ? (
+        <div class="case-body">
+          <div class="case-section">
+            <h2>Contexte</h2>
+            {client.caseStudy.context.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+          <div class="case-section">
+            <h2>Ce qui a été fait</h2>
+            <ol>
+              {client.caseStudy.actions.map((action) => <li set:html={action} />)}
+            </ol>
+          </div>
+          <div class="case-section">
+            <h2>Résultat</h2>
+            {client.caseStudy.result.map((paragraph) => <p>{paragraph}</p>)}
+            {client.caseStudy.resultImages && (
+              <div class="case-images">
+                {client.caseStudy.resultImages.map((image) => (
+                  <button
+                    type="button"
+                    class="case-thumb"
+                    data-lightbox-src={image.src}
+                    data-lightbox-alt={image.alt}
+                  >
+                    <img src={image.src} alt={image.alt} loading="lazy" />
+                  </button>
+                ))}
+              </div>
+            )}
+            {client.caseStudy.resultLinks && (
+              <ul class="case-links">
+                {client.caseStudy.resultLinks.map((link) => (
+                  <li>
+                    <a href={link.url} target="_blank" rel="noopener noreferrer">
+                      {link.label} →
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div class="case-body">
+          <div class="case-section">
+            <h2>Contexte</h2>
+            <p class="case-placeholder">Contenu à venir</p>
+          </div>
+          <div class="case-section">
+            <h2>Ce qui a été fait</h2>
+            <p class="case-placeholder">Contenu à venir</p>
+          </div>
+          <div class="case-section">
+            <h2>Résultat</h2>
+            <p class="case-placeholder">Contenu à venir</p>
+          </div>
+        </div>
+      )}
+
+      <dialog id="lightbox" class="lightbox">
+        <button type="button" class="lightbox__close" data-modal-close aria-label="Fermer">×</button>
+        <img id="lightbox-img" src="" alt="" />
+      </dialog>
     </div>
   </section>
 </Layout>
+
+<script>
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  if (lightbox instanceof HTMLDialogElement) {
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) lightbox.close();
+    });
+    lightbox.querySelector("[data-modal-close]")?.addEventListener("click", () => lightbox.close());
+  }
+
+  document.querySelectorAll<HTMLButtonElement>("[data-lightbox-src]").forEach((thumb) => {
+    thumb.addEventListener("click", () => {
+      if (!(lightbox instanceof HTMLDialogElement) || !(lightboxImg instanceof HTMLImageElement)) return;
+      lightboxImg.src = thumb.dataset.lightboxSrc ?? "";
+      lightboxImg.alt = thumb.dataset.lightboxAlt ?? "";
+      lightbox.showModal();
+    });
+  });
+</script>
 
 <style>
   .back-link {
@@ -53,20 +123,151 @@ const { client } = Astro.props;
     color: var(--color-text);
   }
 
-  .case-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  .case-header {
+    display: flex;
+    align-items: center;
     gap: 20px;
+  }
+
+  .case-header__logo {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .case-header h1 {
+    margin: 0;
+  }
+
+  .case-body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 48px;
+    max-width: 70ch;
+  }
+
+  .case-section h2 {
+    font-size: 24px;
+    color: var(--color-heading-accent);
+    margin: 0 0 12px;
+  }
+
+  .case-section p + p {
+    margin-top: 10px;
+  }
+
+  .case-section ol {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .case-placeholder {
+    color: var(--color-text-secondary);
+  }
+
+  .case-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
     margin-top: 40px;
   }
 
-  .case-grid .placeholder {
-    min-height: 160px;
+  .case-links {
+    list-style: none;
+    margin: 16px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
-  @media (max-width: 800px) {
-    .case-grid {
-      grid-template-columns: 1fr;
+  .case-links a {
+    font-size: 15px;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .case-links a:hover {
+    text-decoration: underline;
+  }
+
+  .case-thumb {
+    width: 160px;
+    height: 110px;
+    padding: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: none;
+    cursor: pointer;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .case-thumb:hover {
+    border-color: var(--color-text);
+    transform: translateY(-2px);
+  }
+
+  .case-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .lightbox {
+    position: relative;
+    width: min(1000px, 92vw);
+    max-height: 90vh;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 0;
+    background: transparent;
+  }
+
+  .lightbox::backdrop {
+    background: rgba(19, 42, 19, 0.75);
+  }
+
+  .lightbox img {
+    display: block;
+    width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+  }
+
+  .lightbox__close {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .lightbox__close:hover {
+    border-color: var(--color-text);
+  }
+
+  @media (max-width: 640px) {
+    .lightbox__close {
+      top: 8px;
+      right: 8px;
     }
   }
 </style>
