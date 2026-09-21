@@ -46,6 +46,17 @@ export const clients: Client[] = [
     name: "Quercus Gestion",
     description: "Cabinet de direction administrative et financière.",
     logo: "/logos/quercus-gestion.png",
+    caseStudy: {
+      context: [
+        "Quercus Gestion est un cabinet de conseil en direction administrative et financière externalisée qui accompagne les PME en les aidant à se structurer.",
+      ],
+      actions: [
+        "Pour développer son activité, j'ai proposé à l'entreprise de mettre en place une <strong>VSL Call</strong>. C'est une VSL (video sales letter) qui renvoie sur un questionnaire et une prise de rendez-vous.",
+        "La VSL est pertinente dans ce cas-là, car elle permet de : filtrer les prospects en amont en faisant bien comprendre à qui s'adresse l'entreprise et pour qui est l'offre, répondre aux questions récurrentes, et automatiser la prospection 24h/24, 7j/7.",
+        '<a href="/quercus/vsl-script" target="_blank" rel="noopener noreferrer">Voir le script de la VSL →</a>',
+      ],
+      result: ["Contenu à venir."],
+    },
   },
   {
     slug: "copy-camp",
