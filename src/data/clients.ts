@@ -11,7 +11,7 @@ export interface CaseStudyLink {
 export interface CaseStudy {
   context: string[];
   actions: string[];
-  result: string[];
+  result?: string[];
   resultImages?: CaseStudyImage[];
   resultLinks?: CaseStudyLink[];
 }
@@ -52,10 +52,9 @@ export const clients: Client[] = [
       ],
       actions: [
         "Pour développer son activité, j'ai proposé à l'entreprise de mettre en place une <strong>VSL Call</strong>. C'est une VSL (video sales letter) qui renvoie sur un questionnaire et une prise de rendez-vous.",
-        "La VSL est pertinente dans ce cas-là, car elle permet de : filtrer les prospects en amont en faisant bien comprendre à qui s'adresse l'entreprise et pour qui est l'offre, répondre aux questions récurrentes, et automatiser la prospection 24h/24, 7j/7.",
-        '<a href="/quercus/vsl-script" target="_blank" rel="noopener noreferrer">Voir le script de la VSL →</a>',
+        "La VSL est pertinente dans ce cas-là, car elle permet de :<ul><li>filtrer les prospects en amont en faisant bien comprendre à qui s'adresse l'entreprise et pour qui est l'offre.</li><li>répondre aux questions récurrentes.</li><li>automatiser la prospection 24h/24, 7j/7.</li></ul>",
+        '<a href="/quercus/vsl-script" target="_blank" rel="noopener noreferrer">Voir le script de la VSL</a>',
       ],
-      result: ["Contenu à venir."],
     },
   },
   {

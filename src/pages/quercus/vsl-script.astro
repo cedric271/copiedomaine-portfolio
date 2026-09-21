@@ -1,886 +1,110 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-
-interface Hook {
-  headline: string;
-  subline?: string;
-}
-
-const hooks: Hook[] = [
-  {
-    headline: "Cette entreprise de logistique perdait 180 000€ par an sans le savoir.",
-    subline:
-      "Voici comment nous avons identifié les fuites en 3 semaines… sans bouleverser leur organisation, et sans faire appel à un cabinet d'audit hors de prix.",
-  },
-  {
-    headline: "Voici comment cette PME dans le BTP a augmenté sa marge opérationnelle de 26% en 6 mois.",
-  },
-  {
-    headline: "Cette PME industrielle a augmenté sa valorisation de 420 000€ en vue d'une transmission.",
-    subline: "Sans recruter de directeur financier et en seulement 7 mois.",
-  },
-  {
-    headline: "Voici comment ce cabinet de conseil a dégagé 250 000€ de trésorerie supplémentaire en 5 mois.",
-    subline: "Sans couper dans les effectifs et sans augmenter les prix.",
-  },
-  {
-    headline: "Cette dirigeante a arrêté de prendre des décisions à l'aveugle après 12 ans à la tête de son entreprise.",
-    subline: "Sans recruter en interne, sans changer d'expert-comptable… et en gardant le contrôle total de sa stratégie.",
-  },
-  {
-    headline: "Voici comment cette entreprise BTP prend maintenant toutes ses décisions stratégiques en moins de 48h.",
-    subline: "Sans multiplier les réunions et avec des chiffres fiables en temps réel.",
-  },
-  {
-    headline: "Cette PME pensait que sa gamme premium était rentable. Elle perdait en réalité 95 000€ par an.",
-    subline: "Voici comment nous avons retourné la situation en 3 mois… (sans arrêter la production et sans licencier)",
-  },
-];
-
-const leadRaw = `
-//Afficher le texte en sous-titres//
-
-//Stéphanie en voix off//
-
-Imaginez…
-
-Vous êtes dirigeant de PME.
-
-Vous venez de doubler votre chiffre d'affaires en 4 ans.
-
-De 10 à 22 millions d'euros.
-
-À priori, votre affaire tourne bien.
-
-Oui mais.
-
-24h semble trop court pour une journée.
-
-Vous jonglez constamment entre la production et vos commerciaux.
-
-Vous devez valider 80% des décisions, souvent dans l'urgence.
-
-Vous n'avez aucune visibilité sur la rentabilité réelle de vos produits.
-
-Votre entreprise avance à l'aveugle, sous tension permanente.
-
-Et l'organisation repose entièrement sur vous.
-
-Résultat :
-
-Vous êtes épuisé, stressé et surtout…
-
-L'équilibre vie pro/vie perso devient de plus en plus compliqué à gérer.
-
-Vous vous posez même la question de savoir s'il y a un réel équilibre.
-
-Cette situation, c'était celle d'un dirigeant englouti par sa propre PME.
-
-Pourtant, après avoir passé 6 mois au cœur de son entreprise…
-
-Voici sa situation aujourd'hui :
-
-Sa marge opérationnelle a augmenté de +26%.
-
-//Afficher à l'écran//
-
-Les décisions sont déléguées et parfaitement optimisées grâce à un COMEX mensuel.
-
-Il a maintenant un budget prévisionnel qui lui dit enfin où il va.
-
-Et une nouvelle structure opérationnelle a été mise en place, pour organiser la transmission de l'entreprise à son fils.
-
-Ce dirigeant qui a littéralement changé de vie en à peine un an, c'est //nom du dirigeant//.
-
-Propriétaire d'une PME industrielle dans le nord de la France.
-
-Et je vais vous montrer dans un instant, comment il a fait avec mon aide.
-
-Alors si vous êtes dirigeant d'une PME de 50 à 350 salariés…
-
-Et que vous faites au minimum 1 million d'€ de chiffre d'affaires par an…
-
-Je vous conseille d'écouter très attentivement cette vidéo.
-
-Car je vais aussi vous montrer des cas concrets d'autres dirigeants de PME qui ont :
-
-Ajouté +180 000€ à leur trésorerie
-
-Divisé par 4 leur temps passé dans l'opérationnel
-
-Augmenté leurs ventes de 18% sans recruter davantage
-
-Mais surtout, je vais vous partager la plus grande erreur qu'ils ont faite, qui les empêchait de croître sereinement… Et que vous faites peut-être aussi.
-
-//Stéphanie apparaît à l'écran//
-
-Au passage, je ne me suis pas encore présenté.
-
-Bonjour, je suis Stéphanie Valois.
-
-Bras droit des dirigeants de PME et fondatrice de Quercus Gestion.
-
-Cela fait plus de 15 ans que j'aide les dirigeants à prendre de meilleures décisions.
-
-J'ai été banquier d'affaires, directrice des opérations, et membre de plusieurs comités de direction dans //l'industrie, le bâtiment, le service//.
-
-Aujourd'hui, j'accompagne les dirigeants à structurer leur pilotage financier et à reprendre le contrôle de leur rentabilité.
-
-Et si vous êtes ici, c'est que vous êtes probablement dans la même situation que mes clients à leurs débuts :
-
-Vous avez une belle entreprise,
-Vous connaissez votre métier sur le bout des doigts,
-Vos affaires roulent et vos clients sont contents.
-
-Seulement votre entreprise s'est développée plus vite que sa structure.
-
-Vous continuez à gérer votre activité comme à ses premiers jours.
-
-Et vous le sentez, ça ne peut pas continuer comme ça.
-
-Croyez-moi, je sais de quoi je parle.
-
-Je suis aussi fille d'entrepreneurs.
-
-J'ai grandi en voyant mon père porter seul le poids de son entreprise.
-
-Et après toutes ces années passées aux côtés de dirigeants…
-
-Aujourd'hui encore, je vois trop de PME solides sur le papier, vaciller.
-
-Trop de dirigeants se mettre en danger.
-
-Pas par manque de compétences, mais simplement par manque de pilotage.
-
-Et pour vous montrer à quoi ça peut ressembler une entreprise qui vacille…
-
-Laissez-moi vous raconter l'histoire de Jean-Marc, à qui ce manque de pilotage a fini par coûter très cher.
-`;
-
-const bodyRaw = `
-Jean Marc est dirigeant d'une entreprise de pièces automobiles depuis 25 ans en Normandie.
-
-En 2015, il avait 85 salariés et faisait 12 millions de CA. En théorie, tout roulait.
-
-Sauf que Jean-Marc, c'est une personne de terrain.
-
-Il connaît ses machines, ses process, ses clients.
-
-Mais la finance ? Il déléguait ça à sa comptable.
-
-Le problème, c'est que sa comptable faisait ce qu'elle pouvait.
-
-Elle était compétente sur la saisie, la paie, les déclarations.
-
-Mais le pilotage financier ? Zéro.
-
-Elle lui sortait un bilan tous les 6 mois, et c'était tout.
-
-Alors Jean-Marc pilotait au feeling. Il regardait son compte en banque.
-
-S'il y avait du cash, c'est que ça allait. Sinon, il appelait son banquier.
-
-En 2018, il décroche LE gros contrat dont il rêvait :
-
-Une commande de 50 000 pièces sur 18 mois pour un client dans l'automobile.
-
-Il investit 450 000 euros dans deux nouvelles machines à commandes numériques.
-
-Il recrute 15 personnes et loue un hangar supplémentaire.
-
-Tout le monde le félicitait… "Jean-Marc, tu passes à la vitesse supérieure !"
-
-Sauf que personne n'avait vraiment calculé la rentabilité réelle du contrat.
-
-Le prix de vente avait été négocié serré avec le client. Très serré.
-
-Et Jean-Marc s'était dit "C'est un gros volume, ça va passer."
-
-Mais 6 mois plus tard, son compte en banque est dans le rouge. Il ne comprend pas.
-
-Il tourne à plein régime, il n'a jamais fait autant de CA, et son compte en banque continue de se creuser.
-
-Il appelle son expert-comptable en urgence.
-
-Deux semaines plus tard, le verdict tombe :
-
-Chaque pièce produite lui coûtait 3,20€... et il la vendait 2,90€.
-
-Plus il produisait, plus il perdait de l'argent.
-
-L'inévitable s'est alors produit.
-
-Le cauchemar de tout dirigeant de PME…
-
-Un matin, en faisant le point avec sa comptable, il s'est rendu compte de l'irréparable : 400 000€ de pertes.
-
-L'heure n'était plus aux ajustements.
-
-Il fallait éteindre un feu qui menaçait d'engloutir sa société.
-
-Alors il a licencié.
-
-8 personnes qu'il a été obligé de laisser sur le carreau.
-
-Des mères de familles, des jeunes démarrant dans la vie active.
-
-Tout cela à cause d'une mauvaise décision.
-
-Un mauvais calcul qui, s'il ne l'avait pas découvert à temps, aurait certainement détruit son entreprise.
-
-Ruiné 25 années de travail.
-
-Parce que peu importe à quel point vous êtes bon dans votre métier.
-
-Peu importe la qualité de vos produits ou la fidélité de vos clients.
-
-Les finances sont le système nerveux de votre entreprise.
-
-Et si elles ne sont pas maîtrisées, tout le reste s'effondre.
-
-Un contrat qu'on croit rentable…
-
-Un coût caché qu'on ne voit pas…
-
-Ou une embauche mal prise en compte dans la tréso…
-
-Et tout se dérègle.
-
-Ça commence par une tension sur la trésorerie, puis des retards de paiement…
-
-Et ensuite un découvert un peu plus haut que d'habitude.
-
-Jusqu'au moment où il faut faire un choix douloureux :
-
-Licencier, arrêter un projet en cours de route, ou se priver d'une opportunité…
-
-Et croyez-moi, ce genre d'histoire me touche autant que vous.
-
-Comme je vous le disais plus tôt, je suis issue d'une famille d'entrepreneurs.
-
-Et quand j'étais jeune, à la maison, les repas du soir se terminaient souvent par les mêmes discussions :
-
-Les impayés, les décisions à prendre dans l'urgence, les doutes.
-
-Et ce sentiment du dirigeant de devoir tout porter seul…
-
-J'ai grandi dans cet environnement.
-
-Je sais ce que c'est que d'être à la tête d'une entreprise.
-
-Ce que ça demande et ce que ça coûte.
-
-Mais le pire dans tout ça, c'est que dans la plupart des cas,…
-
-Les catastrophes peuvent être évitées avec de simples précautions.
-
-Dans le cas de Jean-Marc par exemple, voici ce qu'il aurait pu mettre en place :
-
-🔵 Un prévisionnel de trésorerie sur 18 mois.
-
-//Afficher à l'écran//
-
-Un tableau simple qui vous dit, mois par mois :
-Combien vous allez encaisser (paiements clients, acomptes, subventions)
-Combien vous allez décaisser (investissements, salaires, loyer)
-Et ce qu'il vous reste sur le compte
-
-C'est tout.
-
-Juste un tableau qui vous montre si votre trésorerie tient le choc ou si vous allez droit dans le mur.
-
-Si Jean-Marc avait eu ça, il aurait vu noir sur blanc :
-
-"J'investis 800 000 euros en octobre. Mon client paie à 60 jours. En février, je suis à -120 000 euros."
-
-Il aurait vu le problème 4 mois avant.
-
-Et il aurait pu agir en négociant un acompte, en étalant l'investissement, en décalant des recrutements.
-
-Ou alors, il aurait pu mettre en place…
-
-🔵 Un pilotage en temps réel dès le démarrage du projet.
-
-//Afficher à l'écran//
-
-Car même si le contrat avait été bien calibré dès le départ, il aurait dû suivre la rentabilité réelle semaine après semaine…
-
-Avec un tableau de bord simple :
-Coût réel constaté par pièce : matière première, temps machine, main d'œuvre, consommables…
-Marge réelle par série : est-ce que cette série de production rapporte de l'argent ou elle en fait perdre ?
-Trésorerie prévisionnelle vs réalisée : vous aviez prévu d'avoir 150 000€ sur le compte ce mois-ci. Mais vous en avez 80 000…
-
-C'est que quelque chose est en train de déraper !
-
-Ça lui aurait permis de sonner l'alarme au bout de 4 semaines, pas au bout de 6 mois.
-
-Et c'est justement ça, toute la différence entre une entreprise qui subit et une entreprise qui pilote.
-
-Jean-Marc, lui, a découvert trop tard ce que d'autres dirigeants ont réussi à anticiper.
-
-Parce qu'avec les bons outils et les bons réflexes, certains ont non seulement évité la catastrophe…
-
-Mais ont aussi transformé leur entreprise en profondeur.
-
-Comme Thomas, qui reprenait l'entreprise familiale.
-
-Et qui a réussi à dégager +180 000 € de trésorerie et +30% de valorisation de l'activité.
-
-//Afficher à l'écran//
-
-Thomas est le dirigeant d'une menuiserie industrielle de 65 salariés avec un CA de 8,5 M€.
-
-L'entreprise a été créée il y a 40 ans. Mais sur le terrain, rien n'avait vraiment changé.
-
-Le père, Michel, était encore là tous les jours. Il continuait à valider les devis, à négocier avec les fournisseurs…
-
-Et les clients l'appelaient directement, lui.
-
-Thomas était officiellement le nouveau dirigeant, mais dans les faits, les deux systèmes se télescopaient.
-
-Michel pilotait à l'ancienne avec ses carnets et son intuition.
-
-Alors que Thomas voulait digitaliser l'entreprise et la moderniser.
-
-On retrouvait donc une confusion dans les équipes, des doublons dans les décisions et des tensions familiales.
-
-En 3 semaines, nous avons fait un diagnostic complet et identifié les 12 points de décision où père et fils se marchaient dessus.
-
-On a découvert que les chantiers d'agencement tournaient à seulement 8% de marge...
-
-Alors que la marge globale affichée était de 18%.
-
-Nous avons construit un plan de passation clair sur 12 mois, comprenant :
-
-La clarification des rôles : Michel était le Président-conseil. Et Thomas, le Directeur Général opérationnel.
-
-La mise en place d'un tableau de bord mensuel avec le suivi de rentabilité par type de chantier.
-
-La documentation des 15 process critiques pour qu'ils ne reposent plus uniquement sur Michel.
-
-Et une gouvernance à deux étages avec un CODIR hebdomadaire piloté par Thomas…
-
-Et un conseil de famille mensuel pour la vision stratégique.
-
-Résultats après 12 mois :
-
-🟢 La marge est passée de 18% à 24% en arrêtant les chantiers non-rentables.
-
-🟢 La trésorerie disponible est passée à +180 000€.
-
-🟢 Les équipes savent qui décide quoi grâce à une organisation plus fluide.
-
-🟢 La relation père-fils s'est apaisée.
-
-Mais surtout, la valorisation de l'entreprise a gagné +30% en vue de la transmission définitive dans les 3 prochaines années.
-
-Aujourd'hui, Thomas pilote sereinement.
-
-Michel a lâché prise sans perdre son héritage, et la transmission se prépare dans les meilleures conditions.
-
-J'aimerais aussi vous raconter l'histoire de Sophie, qui dirige une enseigne de décoration haut de gamme.
-
-Avec 17 magasins, 230 collaborateurs et 35 M€ de CA.
-
-Et qui a augmenté ses ventes de +18% en divisant par 4 le temps passé dans l'opérationnel.
-
-//Afficher à l'écran//
-
-Au départ, chaque magasin fonctionnait différemment. Avec ses propres fichiers Excel et ses priorités.
-
-Le magasin de Lyon cartonnait à 2,8 millions de CA. Alors que celui de Nantes stagnait à 1,4 million.
-
-Et personne ne savait pourquoi.
-
-Sophie validait 80% des décisions opérationnelles. Elle passait ses journées à éteindre des feux.
-
-Alors voici ce que nous avons fait :
-
-On a standardisé le reporting avec 5 indicateurs clés suivis par les 17 magasins.
-
-Maintenant tout remonte sur un tableau de bord centralisé en temps réel.
-
-On a instauré un comité de pilotage hebdomadaire.
-
-Pour identifier les magasins en difficulté et prendre des décisions rapidement.
-
-On a formé les directeurs de magasin au pilotage autonome.
-
-Ils gèrent maintenant leur point de vente comme une mini-entreprise…
-
-Et font appel à Sophie uniquement pour les décisions importantes.
-
-Résultats après 6 mois :
-
-🟢 +18% de croissance des ventes retail
-
-🟢 Le magasin de Nantes est passé de 1,4 M à 1,9 M de CA.
-
-🟢 Mais surtout, Sophie passe maintenant 4h par semaine sur l'opérationnel au lieu des 15h auparavant.
-
-Et grâce à ça, elle a pu lancer un projet qu'elle repoussait depuis 2 ans faute de temps.
-
-Un projet e-commerce qui a généré 400K€ de CA supplémentaire dès la première année.
-
-Aujourd'hui, Sophie pilote une entreprise avec 17 magasins.
-
-Et elle se concentre enfin sur la croissance au lieu de gérer l'urgence.
-
-Mais pour en arriver là, ces 2 dirigeants ont dû faire un choix.
-
-Soit continuer à s'appuyer sur un comptable compétent et qui fait son travail.
-
-C'est-à-dire, la conformité, les déclarations, le bilan annuel.
-
-Mais qui donne des chiffres sans vraie analyse et avec 6 mois de retard.
-
-Soit tenter de recruter un DAF à temps plein.
-
-Un expert des chiffres, qui sait lire un bilan et construire des reportings.
-
-Mais qui vient du monde de la finance pure et qui est souvent trop théorique et déconnecté du terrain.
-
-Ou alors faire appel à un cabinet de conseils onéreux qui vous dit quoi faire, mais ne le fait jamais avec vous… Et encore moins pour vous.
-
-Mais ces dirigeants le savaient très bien. Ce n'est pas ce dont ils avaient besoin.
-
-Ils voulaient quelqu'un qui sache ce que c'est que de faire un recrutement en urgence à midi, puis de négocier un prêt à 14h.
-
-Quelqu'un qui sait parler chiffres, mais aussi gestion opérationnelle, gouvernance et organisation.
-
-Car c'est précisément là que ça coince.
-
-Pendant toutes ces années que j'ai passées à accompagner les dirigeants de PME…
-
-J'ai trop souvent vu le même scénario se répéter.
-
-Des dirigeants entourés de spécialistes…
-
-DAF, comptable, contrôleur de gestion, expert-comptable…
-
-Chacun expert dans son domaine avec ses outils et ses tableaux.
-
-Mais sans vision globale de l'entreprise.
-
-Et sans personne pour connecter les points.
-
-Personne pour dire "voilà ce que ça implique, voilà ce qu'il faut décider, et voilà comment on le met en œuvre."
-
-Laissant le dirigeant face à lui-même. Sans personne avec qui challenger ses décisions.
-
-Alors après avoir vu des dizaines de dirigeants se débattre seuls malgré des équipes compétentes autour d'eux…
-
-J'ai compris qu'il fallait créer autre chose.
-
-Un service réellement pensé pour eux.
-
-Pas un expert de plus, mais un copilote.
-
-Un service qui ne se contente pas de produire des analyses.
-
-Mais, qui fait le lien entre vos chiffres, votre stratégie et vos équipes.
-
-C'est comme ça que Quercus Gestion est né.
-
-//Afficher à l'écran//
-
-Pour être le copilote financier, stratégique et organisationnel que tout dirigeant mérite.
-
-Et voici concrètement comment ça se passe quand on entre dans votre entreprise :
-
-📍 Mois 1 : Le diagnostic
-
-//Afficher à l'écran//
-
-On réalise un audit financier et organisationnel complet.
-
-Pour comprendre ce qui se passe sur le terrain et comment votre entreprise fonctionne.
-
-🔵 On cartographie votre chaîne de valeur :
-
-Du devis à la facturation, en passant par la production et les achats.
-
-On regarde :
-Où se créent vos marges et où elles se volatilisent.
-Quels produits, quels clients, quelles activités sont rentables ?
-Et lesquels ne le sont pas ?
-
-🔵 On observe comment votre organisation fonctionne :
-
-Qui décide quoi ?
-Quels flux d'informations circulent (ou non) entre les services ?
-Où sont les lenteurs, les doublons, les pertes de temps ?
-
-🔵 On identifie vos vrais leviers de croissance et vos risques cachés ?
-
-Avez-vous un client qui représente 40 % du CA, mais qui vous paie à 90 jours ?
-
-Est-ce qu'un poste stratégique repose entièrement sur une seule personne ?
-
-Y a-t-il une habitude en interne qui vous coûte des milliers d'euros chaque mois sans que personne ne s'en rende compte ?
-
-À la fin de ce premier mois, vous avez une photo claire et objective de votre entreprise.
-
-Vous voyez ce qui marche, ce qui bloque, et où agir en priorité.
-
-📍 Mois 2 et 3 : On structure le pilotage
-
-//Afficher à l'écran//
-
-Là, on passe à l'action et on met en place les outils qui vous manquent pour piloter.
-
-🟣 Un tableau de bord sur-mesure, que vous ouvrez en réunion et qui vous dit instantanément :
-
-Quelle activité est vraiment rentable
-Où part votre trésorerie
-Quels clients génèrent du cash et lesquels en consomment
-
-🟣 Un budget prévisionnel qui vous montre mois par mois :
-
-Ce que vous pouvez investir
-Quand il faut ralentir ou accélérer
-Et comment tenir vos objectifs sans serrer les dents
-
-🟣 Une gouvernance claire et simple, adaptée à votre structure :
-
-Qui décide quoi ?
-Avec qui ?
-Et à quel moment ?
-
-🟣 Des process fluides pour que l'information circule vite entre vos services :
-
-Moins de "je ne savais pas" et plus de coordination.
-
-Moins de réunions stériles et plus de décisions prises.
-
-Au bout de cette deuxième phase, votre entreprise ne repose plus uniquement sur vous.
-
-Et vous ne pilotez plus au feeling. Mais avec des chiffres fiables et en temps réel.
-
-📍 Mois 4 à 6 : On installe le rythme
-
-//Afficher à l'écran//
-
-On ne vous laisse pas seul avec les nouveaux outils.
-
-🟢 Je prends place à vos comités de direction pour challenger vos décisions avec les chiffres sous les yeux.
-
-Faut-il baisser les prix pour emporter un appel d'offres ? Je vous montre l'impact réel sur la marge.
-
-Est-ce que vous pouvez embaucher un responsable de production ? On regarde ensemble si la trésorerie vous le permet.
-
-Faut-il internaliser un service ou continuer à le sous-traiter ? On compare les coûts complets, les impacts sur la qualité, les délais, la flexibilité, etc.
-
-Parfois, internaliser semble rentable, mais cache des coûts indirects non anticipés.
-
-🟢 Je vous alerte si un indicateur décroche avant que ça devienne un problème :
-
-Comme une activité qui s'érode, un client qui devient risqué, une dérive de vos coûts.
-
-Un chantier qui consomme trop de cash, ou un poste de dépense qui explose.
-
-🟢 On se voit également chaque mois pour faire le point sur :
-
-Vos marges réelles par produit, par client et par activité.
-
-Voir si un client tire vos marges vers le bas sans que vous ne le voyiez.
-
-🟢 On regarde si votre nouveau projet est aussi rentable que prévu.
-
-🟢 On pose à plat ce qui ne fonctionne pas comme :
-
-Un délai de paiement client qui s'allonge et qui met votre trésorerie sous tension
-Un process qui ralentit vos équipes
-Une activité qui consomme du cash sans générer de rentabilité
-
-🟢 Je vous accompagne également sur la prise de décisions importantes…
-
-Faut-il investir dans cette machine ou attendre 6 mois ?
-
-Doit-on renégocier ce contrat avec le client ou l'arrêter ?
-
-Peut-on envisager un partenariat pour mutualiser les coûts de la logistique, de la production ? Ou pour gagner un gros appel d'offres.
-
-Bref… Vous n'êtes plus seul face aux chiffres.
-
-Je suis à vos côtés sur le terrain.
-
-Comme votre copilote qui structure votre entreprise et fiabilise vos chiffres…
-
-Pour qu'à la fin, vous puissiez prendre les bonnes décisions sans avoir besoin de m'appeler à chaque tournant.
-
-L'objectif de l'accompagnement Quercus est de vous rendre autonome.
-
-Et qu'au bout de six à neuf mois, votre entreprise tourne sans que tout dépende de vous.
-
-À ce jour, nous sommes les seuls en France à proposer ce niveau d'accompagnement opérationnel.
-
-Taillé sur mesure pour les PME en croissance, en transmission ou en refonte de business modèle.
-
-Et chez Quercus, nous faisons un constat.
-
-Aujourd'hui, il y a deux types de PME…
-
-Celles qui vivent en tension permanente.
-
-Toujours à flux tendu, à courir après le cash, à reculer les décisions importantes.
-
-Et celles qui savent où elles en sont, où elles vont, et comment y aller.
-
-La différence entre les deux ?
-
-Ce n'est pas la taille, ni le secteur d'activité.
-
-C'est un pilotage précis et rigoureux.
-
-Et cela demande une implication totale dans votre entreprise.
-
-Quand on arrive chez vous, c'est pour faire le job à votre place.
-
-On prend en charge toute la direction financière.
-
-On structure, on outille et on pilote.
-
-Mais comme vous pouvez l'imaginer, ce niveau d'engagement demande du temps, de la rigueur et de la disponibilité.
-
-C'est pourquoi nous sommes très limités dans le nombre de clients que nous pouvons accompagner chaque mois.
-
-2 à 3, pas plus.
-
-Alors pour voir si nous pouvons travailler ensemble et viser les mêmes résultats qu'avec Thomas, Sophie et Loïc...
-
-Voilà ce que je vous propose :
-
-Un appel de 30 minutes avec moi, sans engagement.
-
-Pendant cet appel, on va faire trois choses :
-
-1. Comprendre votre situation :
-
-Où en êtes-vous aujourd'hui ? Quels sont vos enjeux prioritaires ? Quelles décisions critiques vous posez-vous en ce moment ?
-
-2. Voir si l'accompagnement Quercus Gestion est pertinent pour vous :
-
-Parce que je ne travaille pas avec tout le monde.
-
-Si vous avez déjà une structure financière et organisationnelle solide, vous n'avez pas besoin de moi.
-
-Par contre, si vous êtes à un tournant stratégique et que vous pilotez encore à vue…
-
-Là, on peut faire des miracles ensemble.
-
-3. Vous donner tous les détails :
-
-Comment ça se passe concrètement…
-
-Combien de temps ça prend…
-
-Et bien sûr, les conditions tarifaires.
-
-Tout sera transparent.
-
-Et si on décide de travailler ensemble ?
-
-Je me déplace directement dans votre entreprise, où que vous soyez en France, pour démarrer cette nouvelle aventure.
-
-Pour réserver votre appel, cliquez sur le bouton juste en dessous de cette vidéo.
-
-Remplissez le rapide questionnaire pour que je comprenne votre situation avant notre échange.
-
-Et rappelez-vous une chose. Vous n'êtes peut-être qu'à 6 mois de tout changer.
-
-6 mois pour reprendre le contrôle sur vos chiffres…
-
-Et pour faire tourner l'entreprise sans que tout repose sur vous.
-
-Imaginez ne plus avoir cette boule au ventre à la fin du mois.
-
-Savoir exactement ce que chaque décision vous coûte ou vous rapporte.
-
-Pouvoir vous absenter 15 jours sans que l'activité s'écroule.
-
-Et surtout, piloter une entreprise structurée, rentable et prête à grandir.
-
-C'est ce que vivent aujourd'hui les dirigeants que nous accompagnons.
-
-Et dans 6 mois, ce pourrait être vous.
-
-Alors voilà ce que vous pouvez faire maintenant :
-
-Cliquez sur le bouton sous cette vidéo et répondez aux 10 questions du questionnaire.
-
-Une fois que vous avez répondu à ces 10 questions, choisissez simplement un créneau dans l'agenda qui apparaîtra pour planifier un appel.
-
-Ça ne prend que 3 minutes. Et ça nous permettra de voir si vous correspondez aux critères d'entrée de Quercus Gestion.
-
-Si c'est le cas, je vous appellerai pour notre premier échange.
-
-Et peut-être que tout commencera là.
-
-À très bientôt.
-`;
-
-function highlightNotes(text: string) {
-  return text.replace(/\/\/([^/]+)\/\//g, (_match, inner: string) => {
-    const trimmed = inner.trim();
-    const isDirection = /^(afficher|stéphanie)/i.test(trimmed);
-    const cls = isDirection ? "note note--direction" : "note note--todo";
-    return `<span class="${cls}">${trimmed}</span>`;
-  });
-}
-
-function toParagraphs(raw: string) {
-  return raw
-    .split(/\n\s*\n+/)
-    .map((block) => block.trim())
-    .filter(Boolean)
-    .map((block) => {
-      const collapsed = block.replace(/\s*\n\s*/g, " ").trim();
-      const withNotes = highlightNotes(collapsed);
-      if (collapsed.startsWith("📍")) {
-        return `<h3>${withNotes}</h3>`;
-      }
-      return `<p>${withNotes}</p>`;
-    })
-    .join("\n");
-}
-
-const leadHtml = toParagraphs(leadRaw);
-const bodyHtml = toParagraphs(bodyRaw);
+import { quercusVslHtml } from "../../data/quercus-vsl-content";
 ---
 
 <Layout title="Script VSL — Quercus Gestion">
-  <section class="section">
-    <div class="container">
+  <section class="doc-section">
+    <div class="doc-page">
       <a class="back-link" href="/#travaux">← Retour au portfolio</a>
-
-      <span class="eyebrow">Quercus Gestion</span>
-      <h1>Script de la VSL</h1>
-
-      <div class="legend">
-        <span class="legend__item"><span class="note note--todo">exemple</span> information à compléter / vérifier</span>
-        <span class="legend__item"><span class="note note--direction">exemple</span> indication de montage / mise à l'écran</span>
-      </div>
-
-      <h2>Accroches possibles</h2>
-      <div class="hooks">
-        {hooks.map((hook) => (
-          <div class="hook">
-            <p class="hook__headline">{hook.headline}</p>
-            {hook.subline && <p class="hook__subline">{hook.subline}</p>}
-          </div>
-        ))}
-      </div>
-
-      <h2>Lead</h2>
-      <div class="script" set:html={leadHtml} />
-
-      <h2>Corps du script</h2>
-      <div class="script" set:html={bodyHtml} />
+      <h1>Script VSL — Quercus Gestion</h1>
+      <div class="doc-content" set:html={quercusVslHtml} />
     </div>
   </section>
 </Layout>
 
 <style>
+  .doc-section {
+    background: #e8e8e6;
+    padding: 64px 16px 96px;
+    min-height: 60vh;
+  }
+
+  .doc-page {
+    max-width: 760px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 72px 88px;
+  }
+
   .back-link {
     display: inline-block;
     font-size: 14px;
     color: var(--color-text-secondary);
     text-decoration: none;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
   }
 
   .back-link:hover {
     color: var(--color-text);
   }
 
-  .eyebrow {
-    display: inline-block;
-    font-family: var(--font-heading);
+  .doc-page h1 {
+    font-size: 26px;
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .doc-content :global(h2) {
+    font-size: 20px;
+    color: var(--color-heading-accent);
+    margin: 40px 0 16px;
+  }
+
+  .doc-content :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .doc-content :global(h3) {
+    font-size: 17px;
     font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--color-text-secondary);
-    margin-bottom: 8px;
+    margin: 24px 0 4px;
   }
 
-  h1 {
-    margin-bottom: 24px;
+  .doc-content :global(p) {
+    margin: 0 0 14px;
+    line-height: 1.7;
   }
 
-  h2 {
-    font-size: 22px;
-    color: var(--color-heading-accent);
-    margin: 48px 0 20px;
-  }
-
-  .legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    font-size: 14px;
-    color: var(--color-text-secondary);
-  }
-
-  .legend__item {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .note {
-    display: inline;
-    padding: 1px 6px;
-    border-radius: 4px;
-    font-size: 0.95em;
-  }
-
-  .note--todo {
-    background: #fdf1b8;
-    color: #6b5a00;
-  }
-
-  .note--direction {
-    background: var(--color-tint);
-    color: var(--color-heading-accent);
-  }
-
-  .hooks {
+  .doc-content :global(ul) {
+    margin: 0 0 14px;
+    padding-left: 24px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 6px;
   }
 
-  .hook {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: 20px 24px;
+  .doc-content :global(mark) {
+    background: none;
+    color: inherit;
+    padding: 1px 3px;
+    border-radius: 2px;
   }
 
-  .hook__headline {
-    margin: 0;
-    font-family: var(--font-heading);
-    font-weight: 600;
-    color: var(--color-text);
+  .doc-content :global(mark.hl--todo) {
+    background: #fff3a3;
   }
 
-  .hook__subline {
-    margin: 8px 0 0;
-    color: var(--color-text-secondary);
+  .doc-content :global(mark.hl--direction) {
+    background: #bdf2cf;
   }
 
-  .script {
-    max-width: 70ch;
+  .doc-content :global(hr.script-divider) {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 40px 0;
   }
 
-  .script :global(p) {
-    margin: 0 0 16px;
-  }
+  @media (max-width: 700px) {
+    .doc-section {
+      padding: 32px 12px 64px;
+    }
 
-  .script :global(h3) {
-    font-size: 17px;
-    margin: 32px 0 12px;
+    .doc-page {
+      padding: 32px 24px;
+    }
   }
 </style>

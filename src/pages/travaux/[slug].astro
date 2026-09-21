@@ -30,39 +30,41 @@ const { client } = Astro.props;
           </div>
           <div class="case-section">
             <h2>Ce qui a été fait</h2>
-            <ol>
-              {client.caseStudy.actions.map((action) => <li set:html={action} />)}
-            </ol>
+            <div class="case-actions">
+              {client.caseStudy.actions.map((action) => <div class="case-action" set:html={action} />)}
+            </div>
           </div>
-          <div class="case-section">
-            <h2>Résultat</h2>
-            {client.caseStudy.result.map((paragraph) => <p>{paragraph}</p>)}
-            {client.caseStudy.resultImages && (
-              <div class="case-images">
-                {client.caseStudy.resultImages.map((image) => (
-                  <button
-                    type="button"
-                    class="case-thumb"
-                    data-lightbox-src={image.src}
-                    data-lightbox-alt={image.alt}
-                  >
-                    <img src={image.src} alt={image.alt} loading="lazy" />
-                  </button>
-                ))}
-              </div>
-            )}
-            {client.caseStudy.resultLinks && (
-              <ul class="case-links">
-                {client.caseStudy.resultLinks.map((link) => (
-                  <li>
-                    <a href={link.url} target="_blank" rel="noopener noreferrer">
-                      {link.label} →
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
+          {client.caseStudy.result && (
+            <div class="case-section">
+              <h2>Résultat</h2>
+              {client.caseStudy.result.map((paragraph) => <p>{paragraph}</p>)}
+              {client.caseStudy.resultImages && (
+                <div class="case-images">
+                  {client.caseStudy.resultImages.map((image) => (
+                    <button
+                      type="button"
+                      class="case-thumb"
+                      data-lightbox-src={image.src}
+                      data-lightbox-alt={image.alt}
+                    >
+                      <img src={image.src} alt={image.alt} loading="lazy" />
+                    </button>
+                  ))}
+                </div>
+              )}
+              {client.caseStudy.resultLinks && (
+                <ul class="case-links">
+                  {client.caseStudy.resultLinks.map((link) => (
+                    <li>
+                      <a href={link.url} target="_blank" rel="noopener noreferrer">
+                        {link.label} →
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
         </div>
       ) : (
         <div class="case-body">
@@ -158,12 +160,18 @@ const { client } = Astro.props;
     margin-top: 10px;
   }
 
-  .case-section ol {
-    margin: 0;
+  .case-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .case-action ul {
+    margin: 6px 0 0;
     padding-left: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
   }
 
   .case-placeholder {
