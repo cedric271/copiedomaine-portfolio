@@ -67,7 +67,7 @@ export const clients: Client[] = [
         "Copy camp est une formation de référence en copywriting et en marketing digital sur le marché francophone.",
       ],
       actions: [
-        "Pendant 2 mois, j'ai travaillé sur le cas d'une entreprise dans l'infoprenariat, pour laquelle j'ai créé un tunnel de vente complet. Avec l'étude du persona et la rédaction de toutes les pièces de copy.",
+        "Pendant 2 mois, j'ai travaillé sur le cas d'une entreprise dans l'infoprenariat, pour laquelle j'ai créé un <strong>tunnel de vente complet</strong> avec <strong>l'étude du persona</strong> et la rédaction de toutes les pièces de copy : Publicité ➤ Page optin ➤ Emails post optin ➤ VSL ➤ Page de rendez-vous ➤ Upsell",
         `<div class="action-links">
           <a href="/copy-camp/publicites" target="_blank" rel="noopener noreferrer">Voir la publicité →</a>
           <a href="/copy-camp/page-optin" target="_blank" rel="noopener noreferrer">Voir la page d'optin →</a>
