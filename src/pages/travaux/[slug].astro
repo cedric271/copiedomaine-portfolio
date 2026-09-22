@@ -166,12 +166,29 @@ const { client } = Astro.props;
     gap: 14px;
   }
 
-  .case-action ul {
+  .case-action :global(ul) {
     margin: 6px 0 0;
     padding-left: 20px;
     display: flex;
     flex-direction: column;
     gap: 6px;
+  }
+
+  .case-action :global(.action-links) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 26px;
+  }
+
+  .case-action :global(.action-links a) {
+    font-size: 15px;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .case-action :global(.action-links a:hover) {
+    text-decoration: underline;
   }
 
   .case-placeholder {

@@ -62,6 +62,22 @@ export const clients: Client[] = [
     name: "Copy camp",
     description: "Formation en copywriting et marketing digital.",
     logo: "/logos/copy-camp.jpg",
+    caseStudy: {
+      context: [
+        "Copy camp est une formation de référence en copywriting et en marketing digital sur le marché francophone.",
+      ],
+      actions: [
+        "Pendant 2 mois, j'ai travaillé sur le cas d'une entreprise dans l'infoprenariat, pour laquelle j'ai créé un tunnel de vente complet. Avec l'étude du persona et la rédaction de toutes les pièces de copy.",
+        `<div class="action-links">
+          <a href="/copy-camp/publicites" target="_blank" rel="noopener noreferrer">Voir la publicité →</a>
+          <a href="/copy-camp/page-optin" target="_blank" rel="noopener noreferrer">Voir la page d'optin →</a>
+          <a href="/copy-camp/emails" target="_blank" rel="noopener noreferrer">Voir les emails post optin →</a>
+          <a href="/copy-camp/script-vsl" target="_blank" rel="noopener noreferrer">Voir le script VSL →</a>
+          <a href="/copy-camp/page-appel" target="_blank" rel="noopener noreferrer">Voir la page d'appel →</a>
+          <a href="/copy-camp/upsell" target="_blank" rel="noopener noreferrer">Voir la page d'upsell →</a>
+        </div>`,
+      ],
+    },
   },
   {
     slug: "creativminds",

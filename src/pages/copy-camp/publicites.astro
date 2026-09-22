@@ -1,0 +1,128 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { copyCampAdsHtml } from "../../data/copy-camp-ads-content";
+---
+
+<Layout title="Publicités — Copy camp">
+  <section class="doc-section">
+    <div class="doc-page">
+      <a class="back-link" href="/#travaux">← Retour au portfolio</a>
+      <h1>Publicités — Marketplace Mastery</h1>
+      <p class="doc-note">*Note : ceci est une version avec texte brut sur Gdoc.</p>
+      <div class="doc-content" set:html={copyCampAdsHtml} />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .doc-section {
+    background: #e8e8e6;
+    padding: 64px 16px 96px;
+    min-height: 60vh;
+  }
+
+  .doc-page {
+    max-width: 920px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 72px 96px;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    margin-bottom: 32px;
+  }
+
+  .back-link:hover {
+    color: var(--color-text);
+  }
+
+  .doc-page h1 {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+
+  .doc-note {
+    font-style: italic;
+    color: #7c3aed;
+    font-size: 17px;
+    margin: 0 0 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .doc-content :global(h2) {
+    font-size: 27px;
+    color: var(--color-heading-accent);
+    text-align: center;
+    margin: 56px 0 24px;
+  }
+
+  .doc-content :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .doc-content :global(h3) {
+    font-size: 18px;
+    color: var(--color-text);
+    text-align: center;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .doc-content :global(p) {
+    margin: 0 0 14px;
+    line-height: 1.7;
+  }
+
+  .doc-content :global(p.optin-center) {
+    text-align: center;
+  }
+
+  .doc-content :global(p.optin-big) {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  .doc-content :global(ul) {
+    margin: 0 0 14px;
+    padding-left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .doc-content :global(mark.optin-highlight) {
+    background: #f7d9ae;
+    padding: 1px 4px;
+    border-radius: 2px;
+    color: inherit;
+  }
+
+  .doc-content :global(.doc-image) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 16px auto 28px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+  }
+
+  @media (max-width: 700px) {
+    .doc-section {
+      padding: 32px 12px 64px;
+    }
+
+    .doc-page {
+      padding: 32px 24px;
+    }
+  }
+</style>
