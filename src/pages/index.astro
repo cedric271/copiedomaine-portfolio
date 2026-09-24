@@ -86,10 +86,18 @@ import { clients } from "../data/clients";
               {client.caseStudy.resultLinks && (
                 <ul class="case-modal__links">
                   {client.caseStudy.resultLinks.map((link) => (
-                    <li>
-                      <a href={link.url} target="_blank" rel="noopener noreferrer">
-                        {link.label} →
-                      </a>
+                    <li class={link.wide ? "case-modal__links-wide" : ""}>
+                      {link.youtubeId ? (
+                        <button type="button" class="case-modal__link-btn" data-youtube-id={link.youtubeId}>
+                          {link.label} →
+                        </button>
+                      ) : link.url ? (
+                        <a href={link.url} target="_blank" rel="noopener noreferrer">
+                          {link.label} →
+                        </a>
+                      ) : (
+                        <span class="case-modal__links-pending">{link.label}</span>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -119,6 +127,19 @@ import { clients } from "../data/clients";
   <dialog id="lightbox" class="lightbox">
     <button type="button" class="lightbox__close" data-modal-close aria-label="Fermer">×</button>
     <img id="lightbox-img" src="" alt="" />
+  </dialog>
+
+  <dialog id="video-lightbox" class="lightbox lightbox--video">
+    <button type="button" class="lightbox__close" data-modal-close aria-label="Fermer">×</button>
+    <div class="video-lightbox__frame">
+      <iframe
+        id="video-lightbox-iframe"
+        src=""
+        title="Vidéo"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
   </dialog>
 
   <section id="ia" class="section-tight">
@@ -204,6 +225,21 @@ import { clients } from "../data/clients";
       lightboxImg.alt = thumb.dataset.lightboxAlt ?? "";
       lightbox.showModal();
     });
+  });
+
+  const videoLightbox = document.getElementById("video-lightbox");
+  const videoLightboxIframe = document.getElementById("video-lightbox-iframe");
+
+  document.querySelectorAll<HTMLButtonElement>("[data-youtube-id]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (!(videoLightbox instanceof HTMLDialogElement) || !(videoLightboxIframe instanceof HTMLIFrameElement)) return;
+      videoLightboxIframe.src = `https://www.youtube.com/embed/${btn.dataset.youtubeId}?autoplay=1`;
+      videoLightbox.showModal();
+    });
+  });
+
+  videoLightbox?.addEventListener("close", () => {
+    if (videoLightboxIframe instanceof HTMLIFrameElement) videoLightboxIframe.src = "";
   });
 </script>
 
@@ -559,19 +595,41 @@ import { clients } from "../data/clients";
     list-style: none;
     margin: 40px 0 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
   }
 
-  .case-modal__links a {
+  .case-modal__links-wide {
+    grid-column: 1 / -1;
+  }
+
+  .case-modal__links a,
+  .case-modal__link-btn {
     font-size: 15px;
     color: var(--color-text);
     text-decoration: none;
   }
 
-  .case-modal__links a:hover {
+  .case-modal__link-btn {
+    display: inline;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .case-modal__links a:hover,
+  .case-modal__link-btn:hover {
     text-decoration: underline;
+  }
+
+  .case-modal__links-pending {
+    font-size: 15px;
+    color: var(--color-text-secondary);
   }
 
   .case-modal__thumb {
@@ -620,6 +678,26 @@ import { clients } from "../data/clients";
     border-radius: var(--radius-md);
   }
 
+  .lightbox--video {
+    width: min(400px, 90vw);
+  }
+
+  .video-lightbox__frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .video-lightbox__frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
   .lightbox__close {
     position: absolute;
     top: -16px;
@@ -645,6 +723,10 @@ import { clients } from "../data/clients";
   @media (max-width: 640px) {
     .case-modal {
       padding: 28px;
+    }
+
+    .case-modal__links {
+      grid-template-columns: 1fr;
     }
 
     .lightbox__close {

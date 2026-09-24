@@ -5,7 +5,9 @@ export interface CaseStudyImage {
 
 export interface CaseStudyLink {
   label: string;
-  url: string;
+  url?: string;
+  wide?: boolean;
+  youtubeId?: string;
 }
 
 export interface CaseStudy {
@@ -36,6 +38,29 @@ export const clients: Client[] = [
     name: "Groupe M&G Marketing",
     description: "Centre d'appels et organisation de ventes privées dans l'automobile.",
     logo: "/logos/groupe-mg-marketing.gif",
+    caseStudy: {
+      context: [
+        "Groupe M&G Marketing aide les concessionnaires automobiles à augmenter leurs ventes de véhicules. Notamment via leur centre d'appel, leurs formations pour le personnel en concession et l'organisation de ventes privées.",
+      ],
+      actions: [
+        "L'entreprise voulait se faire connaître auprès d'autres clients potentiels. J'ai mis en place une stratégie de contenu sur les réseaux sociaux pour développer leur visibilité, expliquer ce qu'ils font et montrer leurs résultats.",
+        "L'ensemble de la stratégie consistait en la publication sur les comptes <strong>LinkedIn, Instagram et Facebook</strong> de l'entreprise :<ul><li>2 publications/semaine | 104 publications sur 12 mois</li><li>1 vidéo courte/mois | 12 vidéos sur 12 mois</li><li>1 vidéo corporative sur le site internet</li></ul>",
+        "Ainsi que du <strong>ghostwriting LinkedIn</strong> sur le compte personnel du président directeur, à raison de 2 publications par semaine.",
+      ],
+      result: [
+        "Moins de deux mois après le début de la stratégie, 2 nouveaux clients ont contacté l'entreprise après avoir vu passer les publications sur les réseaux sociaux. Ce sont 2 contrats qui ont été signés pour une valeur d'environ 10 000 $.",
+      ],
+      resultLinks: [
+        { label: "Voir les 104 publications", url: "/groupe-mg-marketing/recueil-publications", wide: true },
+        { label: "Voir la vidéo courte 1", youtubeId: "o2OBIcGMs84" },
+        { label: "Voir la vidéo courte 2", youtubeId: "4YcD4S3QINA" },
+        { label: "Voir la vidéo courte 3", youtubeId: "_9z53_mk5qE" },
+        { label: "Voir la vidéo courte 4", youtubeId: "GWt7VGtjZVk" },
+        { label: "Voir la vidéo courte 6", youtubeId: "gbgy5Bp-s4M" },
+        { label: "Voir la vidéo courte 7", youtubeId: "TIBi4tqKeNo" },
+        { label: "Voir la vidéo corporative (à venir)", wide: true },
+      ],
+    },
   },
   {
     slug: "groupe-automax",

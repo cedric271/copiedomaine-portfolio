@@ -55,10 +55,14 @@ const { client } = Astro.props;
               {client.caseStudy.resultLinks && (
                 <ul class="case-links">
                   {client.caseStudy.resultLinks.map((link) => (
-                    <li>
-                      <a href={link.url} target="_blank" rel="noopener noreferrer">
-                        {link.label} →
-                      </a>
+                    <li class={link.wide ? "case-links-wide" : ""}>
+                      {link.url ? (
+                        <a href={link.url} target="_blank" rel="noopener noreferrer">
+                          {link.label} →
+                        </a>
+                      ) : (
+                        <span class="case-links-pending">{link.label}</span>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -206,9 +210,13 @@ const { client } = Astro.props;
     list-style: none;
     margin: 16px 0 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+  }
+
+  .case-links-wide {
+    grid-column: 1 / -1;
   }
 
   .case-links a {
@@ -219,6 +227,11 @@ const { client } = Astro.props;
 
   .case-links a:hover {
     text-decoration: underline;
+  }
+
+  .case-links-pending {
+    font-size: 15px;
+    color: var(--color-text-secondary);
   }
 
   .case-thumb {
@@ -290,6 +303,10 @@ const { client } = Astro.props;
   }
 
   @media (max-width: 640px) {
+    .case-links {
+      grid-template-columns: 1fr;
+    }
+
     .lightbox__close {
       top: 8px;
       right: 8px;
