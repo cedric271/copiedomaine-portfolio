@@ -243,12 +243,13 @@ const { client } = Astro.props;
     overflow: hidden;
     background: none;
     cursor: pointer;
-    transition: border-color 0.15s ease, transform 0.15s ease;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .case-thumb:hover {
-    border-color: var(--color-text);
-    transform: translateY(-2px);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 5px var(--color-accent-glow), 0 12px 24px rgba(19, 42, 19, 0.2);
+    transform: translateY(-5px) scale(1.04);
   }
 
   .case-thumb img {
