@@ -8,7 +8,7 @@ import { clients } from "../data/clients";
   <section id="accueil" class="hero">
     <div class="container hero__content">
       <span class="hero__kicker">Portfolio de Cédric Deneux</span>
-      <h1>Copywriter BtoB <span class="hero__sep">|</span> Bras droit marketing</h1>
+      <h1>Copywriter BtoB <span class="hero__sep">|</span><br class="hero__break" /> Bras droit marketing</h1>
       <p class="hero__subtitle">
         J'accompagne les entreprises à clarifier leur message, développer leur
         visibilité et transformer leur expertise en contenu marketing.
@@ -307,15 +307,15 @@ import { clients } from "../data/clients";
   }
 
   .hero__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
   }
 
   .hero h1 {
     font-size: clamp(2.4rem, 5vw, 3.6rem);
-    max-width: 28ch;
+  }
+
+  .hero__break {
+    display: none;
   }
 
   .hero__kicker {
@@ -342,11 +342,28 @@ import { clients } from "../data/clients";
     line-height: 1.6;
     color: var(--color-text);
     max-width: 44ch;
-    margin-top: 24px;
+    margin: 24px auto 0;
   }
 
   .hero__content .btn {
     margin-top: 40px;
+  }
+
+  @media (max-width: 700px) {
+    .hero h1 {
+      font-size: clamp(1.5rem, 7vw, 2rem);
+      max-width: calc(100vw - 48px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero__subtitle {
+      max-width: calc(100vw - 48px);
+    }
+
+    .hero__break {
+      display: block;
+    }
   }
 
   .client-grid {
