@@ -34,10 +34,29 @@ const { client } = Astro.props;
               {client.caseStudy.actions.map((action) => <div class="case-action" set:html={action} />)}
             </div>
           </div>
-          {client.caseStudy.result && (
+          {(client.caseStudy.result || client.caseStudy.resultBlocks) && (
             <div class="case-section">
               <h2>Résultat</h2>
-              {client.caseStudy.result.map((paragraph) => <p>{paragraph}</p>)}
+              {client.caseStudy.result?.map((paragraph) => <p>{paragraph}</p>)}
+              {client.caseStudy.resultBlocks?.map((block) => (
+                <>
+                  {block.text && <p set:html={block.text} />}
+                  {block.images && (
+                    <div class="case-images">
+                      {block.images.map((image) => (
+                        <button
+                          type="button"
+                          class="case-thumb"
+                          data-lightbox-src={image.src}
+                          data-lightbox-alt={image.alt}
+                        >
+                          <img src={image.src} alt={image.alt} loading="lazy" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ))}
               {client.caseStudy.resultImages && (
                 <div class="case-images">
                   {client.caseStudy.resultImages.map((image) => (
@@ -204,6 +223,10 @@ const { client } = Astro.props;
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 40px;
+  }
+
+  .case-images + p {
+    margin-top: 24px;
   }
 
   .case-links {

@@ -10,10 +10,16 @@ export interface CaseStudyLink {
   youtubeId?: string;
 }
 
+export interface CaseStudyResultBlock {
+  text?: string;
+  images?: CaseStudyImage[];
+}
+
 export interface CaseStudy {
   context: string[];
   actions: string[];
   result?: string[];
+  resultBlocks?: CaseStudyResultBlock[];
   resultImages?: CaseStudyImage[];
   resultLinks?: CaseStudyLink[];
 }
@@ -32,6 +38,53 @@ export const clients: Client[] = [
     name: "Maubius CRM",
     description: "CRM IA pour les concessionnaires automobiles.",
     logo: "/logos/maubius-crm.png",
+    caseStudy: {
+      context: [
+        "Maubius est un CRM avec IA native spécialement conçu pour les concessionnaires automobiles.",
+      ],
+      actions: [
+        "Le produit était toujours en développement et en phase de test chez les premiers clients. Pour promouvoir l'entreprise et lui donner de la visibilité, plusieurs stratégies ont été déployées simultanément :<ul><li><strong>Ghostwriting LinkedIn</strong> pour les comptes de 5 dirigeants, au Québec et en France. Soit jusqu'à 12 publications par semaine minimum.</li><li>Création de contenu sur les comptes <strong>LinkedIn et Instagram</strong> de l'entreprise. 1 publication par semaine.</li><li>Rédaction de toutes les <strong>pages web</strong> du site.</li><li>Rédaction d'<strong>articles de blog</strong> pour l'optimisation SEO/GEO.</li><li>Rédaction d'<strong>articles LinkedIn</strong>.</li><li>Rédaction de <strong>landing pages</strong>.</li><li>Organisation et préparation de <strong>podcast</strong>.</li></ul>",
+      ],
+      resultBlocks: [
+        { text: "Une exposition réussie en <u>6 mois</u> de publications sur le compte principal :" },
+        {
+          text: "Avec plus de <strong>1,4 millions d'impressions</strong>",
+          images: [
+            { src: "/case-studies/maubius-crm/nombre-impressions.png", alt: "Nombre d'impressions cumulées — Maubius CRM" },
+          ],
+        },
+        {
+          text: "Des publications à <strong>+100 000 vues</strong>",
+          images: [
+            { src: "/case-studies/maubius-crm/post-1.png", alt: "Publication à plus de 100 000 vues — Maubius CRM" },
+            { src: "/case-studies/maubius-crm/post-2.png", alt: "Publication à plus de 100 000 vues — Maubius CRM" },
+          ],
+        },
+        {
+          text: "Une augmentation de l'audience de <strong>8 000 à 10 500 abonnés</strong>",
+          images: [
+            { src: "/case-studies/maubius-crm/nombre-abonnes.png", alt: "Augmentation du nombre d'abonnés — Maubius CRM" },
+          ],
+        },
+        {
+          text: "Et de nombreuses autres publications à succès",
+          images: [
+            { src: "/case-studies/maubius-crm/post-3.png", alt: "Publication à succès — Maubius CRM" },
+            { src: "/case-studies/maubius-crm/post-4.png", alt: "Publication à succès — Maubius CRM" },
+            { src: "/case-studies/maubius-crm/post-5.png", alt: "Publication à succès — Maubius CRM" },
+          ],
+        },
+      ],
+      resultLinks: [
+        { label: "Voir les publications LinkedIn du compte 1 (à venir)" },
+        { label: "Voir les publications LinkedIn du compte 2 (à venir)" },
+        { label: "Voir les publications LinkedIn du compte 3 (à venir)" },
+        { label: "Voir les pages web du site (à venir)" },
+        { label: "Voir le site Internet (à venir)" },
+        { label: "Voir les articles LinkedIn (à venir)" },
+        { label: "Voir les landing pages (à venir)" },
+      ],
+    },
   },
   {
     slug: "groupe-mg-marketing",
