@@ -2,39 +2,18 @@
 import Layout from "../layouts/Layout.astro";
 import ContactForm from "../components/ContactForm.astro";
 import { clients } from "../data/clients";
-
-const services = [
-  "VSL",
-  "Publicités",
-  "Tunnels de vente",
-  "Réseaux sociaux",
-  "Ghostwriting",
-  "Emailing",
-  "Marketing assisté par IA",
-  "Stratégie marketing",
-];
 ---
 
 <Layout title="Accueil">
   <section id="accueil" class="hero">
-    <div class="container hero__grid">
-      <div class="hero__content">
-        <h1>
-          <span class="hero__kicker">Portfolio de Cédric Deneux</span>
-          Copywriter BtoB <span class="hero__sep">|</span><br />
-          Bras droit marketing
-        </h1>
-        <p class="hero__subtitle">
-          J'accompagne les entreprises à clarifier leur message, développer leur
-          visibilité et transformer leur expertise en contenu marketing.
-        </p>
-        <a class="btn btn-primary" href="#contact">Réserver un appel</a>
-      </div>
-      <ul class="hero__pills" aria-label="Services">
-        {services.map((service, i) => (
-          <li class="pill" style={`animation-delay: ${i * 70}ms`}>{service}</li>
-        ))}
-      </ul>
+    <div class="container hero__content">
+      <span class="hero__kicker">Portfolio de Cédric Deneux</span>
+      <h1>Copywriter BtoB <span class="hero__sep">|</span> Bras droit marketing</h1>
+      <p class="hero__subtitle">
+        J'accompagne les entreprises à clarifier leur message, développer leur
+        visibilité et transformer leur expertise en contenu marketing.
+      </p>
+      <a class="btn btn-primary" href="#contact">Réserver un appel</a>
     </div>
   </section>
 
@@ -300,7 +279,11 @@ const services = [
   }
 
   #travaux {
-    background: var(--color-tint);
+    background: var(--color-ink);
+  }
+
+  #travaux h2 {
+    color: var(--color-on-dark);
   }
 
   #ia {
@@ -323,11 +306,11 @@ const services = [
     padding: 60px 0 80px;
   }
 
-  .hero__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(240px, 360px);
-    gap: 32px;
+  .hero__content {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
   }
 
   .hero h1 {
@@ -339,7 +322,7 @@ const services = [
     display: block;
     font-family: var(--font-body);
     font-size: 1.1rem;
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: normal;
     line-height: 1.6;
     color: var(--color-text-secondary);
@@ -352,7 +335,11 @@ const services = [
   }
 
   .hero__subtitle {
-    font-size: 20px;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 1.6;
     color: var(--color-text);
     max-width: 44ch;
     margin-top: 24px;
@@ -360,56 +347,6 @@ const services = [
 
   .hero__content .btn {
     margin-top: 40px;
-  }
-
-  .hero__pills {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .pill {
-    font-family: var(--font-heading);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-on-dark);
-    background: var(--color-ink);
-    border: none;
-    border-radius: var(--radius-full);
-    padding: 9px 16px;
-    opacity: 0;
-    animation: pill-in 0.5s ease forwards;
-  }
-
-  @keyframes pill-in {
-    from {
-      opacity: 0;
-      transform: translateY(8px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .pill {
-      animation: none;
-      opacity: 1;
-    }
-  }
-
-  @media (max-width: 900px) {
-    .hero__grid {
-      grid-template-columns: 1fr;
-    }
-
-    .hero__pills {
-      margin-top: 8px;
-    }
   }
 
   .client-grid {
@@ -480,12 +417,12 @@ const services = [
     justify-content: space-between;
     gap: 40px;
     min-height: 160px;
-    background: var(--color-tint);
+    background: var(--color-ink);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: 28px;
     text-decoration: none;
-    color: var(--color-text);
+    color: var(--color-on-dark);
     margin-top: 32px;
     transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
@@ -504,7 +441,7 @@ const services = [
 
   .ia-card span {
     font-size: 14px;
-    color: var(--color-text-secondary);
+    color: var(--color-on-dark-secondary);
   }
 
   .contact-grid {
