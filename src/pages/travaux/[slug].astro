@@ -331,9 +331,16 @@ const { client } = Astro.props;
       grid-template-columns: 1fr;
     }
 
+    .lightbox {
+      width: min(1000px, 86vw);
+    }
+
     .lightbox__close {
-      top: 8px;
-      right: 8px;
+      top: -14px;
+      right: -14px;
+      width: 32px;
+      height: 32px;
+      font-size: 18px;
     }
   }
 </style>
