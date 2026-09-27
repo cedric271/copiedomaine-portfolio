@@ -78,11 +78,8 @@ export const clients: Client[] = [
       resultLinks: [
         { label: "Voir les publications LinkedIn du compte 1", url: "/maubius-crm/publications-linkedin-compte-1" },
         { label: "Voir les publications LinkedIn du compte 2", url: "/maubius-crm/publications-linkedin-compte-2" },
-        { label: "Voir les publications LinkedIn du compte 3 (à venir)" },
         { label: "Voir les pages web du site", url: "/maubius-crm/pages-site" },
-        { label: "Voir le site Internet (à venir)" },
-        { label: "Voir les articles LinkedIn (à venir)" },
-        { label: "Voir les landing pages (à venir)" },
+        { label: "Voir le site Internet", url: "https://maubius.com/" },
       ],
     },
   },
