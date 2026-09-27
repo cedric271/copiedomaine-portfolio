@@ -76,10 +76,10 @@ export const clients: Client[] = [
         },
       ],
       resultLinks: [
-        { label: "Voir les publications LinkedIn du compte 1 (à venir)" },
-        { label: "Voir les publications LinkedIn du compte 2 (à venir)" },
+        { label: "Voir les publications LinkedIn du compte 1", url: "/maubius-crm/publications-linkedin-compte-1" },
+        { label: "Voir les publications LinkedIn du compte 2", url: "/maubius-crm/publications-linkedin-compte-2" },
         { label: "Voir les publications LinkedIn du compte 3 (à venir)" },
-        { label: "Voir les pages web du site (à venir)" },
+        { label: "Voir les pages web du site", url: "/maubius-crm/pages-site" },
         { label: "Voir le site Internet (à venir)" },
         { label: "Voir les articles LinkedIn (à venir)" },
         { label: "Voir les landing pages (à venir)" },
@@ -169,7 +169,7 @@ export const clients: Client[] = [
       ],
       actions: [
         "Pour vendre le produit (physique et digital), j'ai d'abord créé une offre type <strong>tiered offer</strong> avec 3 offres possibles : 69€, 89€ et 97€.",
-        "J'ai ensuite mis en place une <strong>landing page</strong> avec un <strong>bon de commande</strong> et une <strong>page de remerciement</strong> pour vendre l'offre directement sur son site.",
+        "J'ai ensuite mis en place une <strong>landing page</strong> avec un <strong>bon de commande</strong>, une <strong>page de remerciement</strong> et une <strong>séquence d'emails post-achat</strong> pour vendre l'offre directement sur son site.",
         "Enfin, l'entreprise avait besoin de visibilité, avant tout. Nous avons donc fait du <strong>ghostwriting sur LinkedIn</strong> pour développer l'acquisition de prospects et les réorienter vers la landing page.",
       ],
       result: [
