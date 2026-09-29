@@ -1,5 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const blocks = [
+  {
+    slug: "assistant-marketing-ia",
+    title: "L'assistant marketing IA",
+    ready: true,
+  },
+  {
+    slug: "workflows",
+    title: "Workflows",
+    ready: false,
+  },
+  {
+    slug: "exemples-concrets",
+    title: "Exemples concrets",
+    ready: false,
+  },
+];
 ---
 
 <Layout title="IA">
@@ -13,22 +31,97 @@ import Layout from "../layouts/Layout.astro";
       </p>
 
       <div class="ia-grid">
-        <div class="placeholder">
-          <strong>Outils utilisés</strong>
-          Contenu à venir
-        </div>
-        <div class="placeholder">
-          <strong>Workflows</strong>
-          Contenu à venir
-        </div>
-        <div class="placeholder">
-          <strong>Exemples concrets</strong>
-          Contenu à venir
-        </div>
+        {blocks.map((block) =>
+          block.ready ? (
+            <button type="button" class="ia-block" data-modal-target={`modal-${block.slug}`}>
+              <strong>{block.title}</strong>
+              <span>Voir →</span>
+            </button>
+          ) : (
+            <div class="ia-block ia-block--placeholder">
+              <strong>{block.title}</strong>
+              <span>Contenu à venir</span>
+            </div>
+          )
+        )}
       </div>
     </div>
   </section>
+
+  <dialog id="modal-assistant-marketing-ia" class="ia-modal">
+    <button type="button" class="ia-modal__close" data-modal-close aria-label="Fermer">×</button>
+    <div class="ia-modal__body">
+      <h3>L'assistant marketing IA</h3>
+      <p>
+        Pour chaque client, je crée un assistant IA que j'alimente avec tout ce
+        dont il a besoin pour écrire à ma place (ou presque) : le produit et
+        l'offre du client, le persona à qui on s'adresse, ainsi que mes prompts.
+      </p>
+      <p>Concrètement, il m'aide à :</p>
+      <ul>
+        <li>
+          Structurer et rédiger des pièces de copy, telles que : scripts vidéo,
+          séquences mails, landing pages, publicités, infolettres (newsletter).
+        </li>
+        <li>Analyser une page ou un script de vente</li>
+        <li>Rédiger des articles de blog pour le SEO/GEO</li>
+        <li>Faire de la veille concurrentielle</li>
+      </ul>
+      <p>
+        C'est un système structuré et non pas un chatbot générique. Il a le
+        contexte de l'entreprise, des méthodes spécifiques par type de contenu,
+        et une bibliothèque des meilleures publications passées pour calibrer
+        le ton à chaque nouvelle production.
+      </p>
+      <p>Voici à quoi ressemble ce système :</p>
+      <button
+        type="button"
+        class="ia-modal__thumb"
+        data-lightbox-src="/ia/assistant-marketing-ia.png"
+        data-lightbox-alt="Arborescence de fichiers de l'assistant IA (exemple client Maubius)"
+      >
+        <img
+          src="/ia/assistant-marketing-ia.png"
+          alt="Arborescence de fichiers de l'assistant IA (exemple client Maubius)"
+          loading="lazy"
+        />
+      </button>
+    </div>
+  </dialog>
+
+  <dialog id="lightbox" class="lightbox">
+    <button type="button" class="lightbox__close" data-modal-close aria-label="Fermer">×</button>
+    <img id="lightbox-img" src="" alt="" />
+  </dialog>
 </Layout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-modal-target]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const modal = document.getElementById(btn.dataset.modalTarget ?? "");
+      if (modal instanceof HTMLDialogElement) modal.showModal();
+    });
+  });
+
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  document.querySelectorAll<HTMLButtonElement>("[data-lightbox-src]").forEach((thumb) => {
+    thumb.addEventListener("click", () => {
+      if (!(lightbox instanceof HTMLDialogElement) || !(lightboxImg instanceof HTMLImageElement)) return;
+      lightboxImg.src = thumb.dataset.lightboxSrc ?? "";
+      lightboxImg.alt = thumb.dataset.lightboxAlt ?? "";
+      lightbox.showModal();
+    });
+  });
+
+  document.querySelectorAll("dialog").forEach((dialog) => {
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    dialog.querySelector("[data-modal-close]")?.addEventListener("click", () => dialog.close());
+  });
+</script>
 
 <style>
   .back-link {
@@ -55,7 +148,203 @@ import Layout from "../layouts/Layout.astro";
     gap: 20px;
   }
 
-  .ia-grid .placeholder {
+  .ia-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
     min-height: 120px;
+    width: 100%;
+    background: var(--color-ink);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    font: inherit;
+    text-align: left;
+    color: var(--color-on-dark);
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .ia-block strong {
+    font-family: var(--font-heading);
+    font-size: 20px;
+  }
+
+  .ia-block span {
+    font-size: 14px;
+    color: var(--color-on-dark-secondary);
+    white-space: nowrap;
+  }
+
+  button.ia-block:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 5px var(--color-accent-glow), 0 12px 24px rgba(19, 42, 19, 0.15);
+    transform: translateY(-4px);
+  }
+
+  .ia-block--placeholder {
+    color: var(--color-on-dark-secondary);
+    cursor: default;
+  }
+
+  .ia-block--placeholder strong {
+    color: var(--color-on-dark);
+  }
+
+  .ia-modal {
+    position: relative;
+    width: min(640px, 92vw);
+    max-height: 85vh;
+    overflow-y: auto;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 40px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    box-shadow: 0 20px 60px rgba(19, 42, 19, 0.2);
+  }
+
+  .ia-modal::backdrop {
+    background: rgba(19, 42, 19, 0.55);
+  }
+
+  .ia-modal__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .ia-modal__close:hover {
+    border-color: var(--color-text);
+  }
+
+  .ia-modal__body h3 {
+    font-size: 24px;
+    margin: 0 0 20px;
+    padding-right: 32px;
+  }
+
+  .ia-modal__body p {
+    font-size: 16px;
+    color: var(--color-text);
+    margin: 0 0 14px;
+  }
+
+  .ia-modal__body ul {
+    margin: 6px 0 16px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ia-modal__body li {
+    font-size: 16px;
+    color: var(--color-text);
+  }
+
+  .ia-modal__thumb {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .ia-modal__thumb:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 5px var(--color-accent-glow), 0 12px 24px rgba(19, 42, 19, 0.2);
+    transform: translateY(-3px) scale(1.01);
+  }
+
+  .ia-modal__thumb img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .lightbox {
+    position: relative;
+    width: min(1000px, 92vw);
+    max-height: 90vh;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 0;
+    background: transparent;
+  }
+
+  .lightbox::backdrop {
+    background: rgba(19, 42, 19, 0.75);
+  }
+
+  .lightbox img {
+    display: block;
+    width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+  }
+
+  .lightbox__close {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .lightbox__close:hover {
+    border-color: var(--color-text);
+  }
+
+  @media (max-width: 640px) {
+    .ia-block {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .lightbox {
+      width: min(1000px, 86vw);
+    }
+
+    .lightbox__close {
+      top: -14px;
+      right: -14px;
+      width: 32px;
+      height: 32px;
+      font-size: 18px;
+    }
+
+    .ia-modal {
+      padding: 28px;
+    }
   }
 </style>

@@ -184,7 +184,29 @@ const services = [
       <h2>Comment j'utilise l'IA pour votre projet</h2>
       <a class="ia-card" href="/ia">
         <strong>Workflows, outils et exemples concrets</strong>
-        <span>Contenu à venir →</span>
+        <div class="ia-intro">
+          <p>
+            L'IA est un outil puissant. Elle permet de travailler beaucoup plus
+            vite, mais ça reste un outil. Et un outil, ça prend quelqu'un derrière
+            pour bien s'en servir.
+          </p>
+          <p>
+            Je l'utilise tous les jours. Pour autant, l'IA seule ne peut pas tout
+            faire. Il faut lui donner <strong>les bonnes instructions</strong>,
+            savoir <strong>évaluer ses réponses</strong>, et l'alimenter avec
+            <strong> des données de qualité</strong>.
+          </p>
+          <p>Le vrai danger aujourd'hui, c'est l'illusion de savoir.</p>
+          <p>
+            On pose une question, la machine répond, et on croit avoir la
+            réponse… alors que ce n'est pas toujours le cas.
+          </p>
+          <p>
+            C'est pour ça que la maîtrise des fondamentaux en copywriting est
+            indispensable pour travailler avec l'IA.
+          </p>
+        </div>
+        <span>Voir comment j'utilise l'IA dans votre projet →</span>
       </a>
     </div>
   </section>
@@ -512,11 +534,22 @@ const services = [
     color: var(--color-text-secondary);
   }
 
+  .ia-intro p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-on-dark);
+    margin: 0 0 18px;
+  }
+
+  .ia-intro p:last-child {
+    margin-bottom: 0;
+  }
+
   .ia-card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 40px;
+    justify-content: flex-start;
+    gap: 24px;
     min-height: 160px;
     background: var(--color-ink);
     border: 1px solid var(--color-border);
