@@ -1,7 +1,12 @@
 ---
+const WEB3FORMS_ACCESS_KEY = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY;
 ---
 
 <form class="contact-form" id="contact-form">
+  <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+  <input type="hidden" name="subject" value="Nouvelle demande de contact — Copiedomaine" />
+  <input type="hidden" name="from_name" value="Copiedomaine — Formulaire de contact" />
+  <input type="checkbox" name="botcheck" class="contact-form__botcheck" tabindex="-1" autocomplete="off" />
   <label>
     Nom
     <input type="text" name="name" required />
@@ -27,22 +32,27 @@
     if (!status) return;
 
     const submitButton = form.querySelector("button[type=submit]") as HTMLButtonElement;
-    const data = Object.fromEntries(new FormData(form).entries());
 
     submitButton.disabled = true;
     status.textContent = "Envoi en cours…";
     status.className = "contact-form__status";
 
     try {
-      const response = await fetch("/api/contact", {
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) throw new Error("Request failed");
+      const result = await response.json();
 
-      status.textContent = "Message envoyé — je te réponds rapidement.";
+      if (!response.ok || !result.success) {
+        throw new Error(result.message ?? "Request failed");
+      }
+
+      status.textContent = "Message envoyé, je vous répondrai rapidement.";
       status.className = "contact-form__status contact-form__status--success";
       form.reset();
     } catch (error) {
@@ -105,5 +115,9 @@
 
   .contact-form__status--error {
     color: #b3261e;
+  }
+
+  .contact-form__botcheck {
+    display: none;
   }
 </style>
