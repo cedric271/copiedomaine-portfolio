@@ -8,14 +8,14 @@ const blocks = [
     ready: true,
   },
   {
-    slug: "workflows",
-    title: "Workflows",
-    ready: false,
+    slug: "agents-ia",
+    title: "Mes agents IA",
+    ready: true,
   },
   {
-    slug: "exemples-concrets",
-    title: "Exemples concrets",
-    ready: false,
+    slug: "claude-projects",
+    title: "Claude Projects",
+    ready: true,
   },
 ];
 ---
@@ -85,6 +85,102 @@ const blocks = [
           alt="Arborescence de fichiers de l'assistant IA (exemple client Maubius)"
           loading="lazy"
         />
+      </button>
+    </div>
+  </dialog>
+
+  <dialog id="modal-agents-ia" class="ia-modal">
+    <button type="button" class="ia-modal__close" data-modal-close aria-label="Fermer">×</button>
+    <div class="ia-modal__body">
+      <h3>Mes agents IA</h3>
+      <h4>Agent de veille éditoriale</h4>
+      <p>
+        J'ai créé un agent qui scanne le web deux fois par semaine pour
+        repérer des sujets d'actualité en phase avec la ligne éditoriale de
+        mes clients et sur lesquels ils peuvent réagir publiquement.
+      </p>
+      <p>
+        L'agent envoie automatiquement un email avec les trois meilleurs
+        sujets trouvés (parfois un ou deux en bonus, quand c'est pertinent).
+      </p>
+      <p>
+        Pour chaque sujet, l'agent me donne le titre, la source, un résumé,
+        une évaluation du potentiel viral, et surtout{" "}
+        <strong>un angle de rédaction déjà pensé dans la voix du client</strong>.
+      </p>
+      <p>
+        ➤ Pour que ça fonctionne, l'agent doit bien connaître le client, son
+        marché, sa façon de s'exprimer et ce qui résonne avec son audience.
+      </p>
+      <p class="ia-modal__caption">Email envoyé par l'agent :</p>
+      <div class="ia-modal__images">
+        <button
+          type="button"
+          class="ia-modal__thumb"
+          data-lightbox-src="/ia/email-agent-veille-editoriale-1.png"
+          data-lightbox-alt="Email envoyé par l'agent de veille éditoriale — page 1"
+        >
+          <img
+            src="/ia/email-agent-veille-editoriale-1.png"
+            alt="Email envoyé par l'agent de veille éditoriale — page 1"
+            loading="lazy"
+          />
+        </button>
+        <button
+          type="button"
+          class="ia-modal__thumb"
+          data-lightbox-src="/ia/email-agent-veille-editoriale-2.png"
+          data-lightbox-alt="Email envoyé par l'agent de veille éditoriale — page 2"
+        >
+          <img
+            src="/ia/email-agent-veille-editoriale-2.png"
+            alt="Email envoyé par l'agent de veille éditoriale — page 2"
+            loading="lazy"
+          />
+        </button>
+      </div>
+      <p class="ia-modal__caption">
+        Exemple de publication réalisée grâce au sujet déniché par l'agent :
+      </p>
+      <button
+        type="button"
+        class="ia-modal__thumb"
+        data-lightbox-src="/ia/agent-veille-post-exemple.png"
+        data-lightbox-alt="Publication réalisée grâce au sujet déniché par l'agent de veille éditoriale"
+      >
+        <img
+          src="/ia/agent-veille-post-exemple.png"
+          alt="Publication réalisée grâce au sujet déniché par l'agent de veille éditoriale"
+          loading="lazy"
+        />
+      </button>
+    </div>
+  </dialog>
+
+  <dialog id="modal-claude-projects" class="ia-modal">
+    <button type="button" class="ia-modal__close" data-modal-close aria-label="Fermer">×</button>
+    <div class="ia-modal__body">
+      <h3>Claude Projects</h3>
+      <p>
+        Pour le ghostwriting sur LinkedIn, j'utilise les Projets de Claude.ai
+        comme base de connaissance par personne.
+      </p>
+      <p>
+        Chaque projet regroupe tout ce qu'il faut pour écrire dans la voix
+        d'un client précis : l'entreprise, le produit, le persona visé,
+        l'audience, et le style propre à la personne pour qui j'écris.
+      </p>
+      <p>
+        Une fois le projet configuré, je lui donne mon idée de publication
+        pour écrire plus vite, sans repartir de zéro à chaque fois.
+      </p>
+      <button
+        type="button"
+        class="ia-modal__thumb"
+        data-lightbox-src="/ia/claude-projects.png"
+        data-lightbox-alt="Projets dans Claude.ai"
+      >
+        <img src="/ia/claude-projects.png" alt="Projets dans Claude.ai" loading="lazy" />
       </button>
     </div>
   </dialog>
@@ -183,6 +279,10 @@ const blocks = [
     transform: translateY(-4px);
   }
 
+  button.ia-block:hover span {
+    text-decoration: underline;
+  }
+
   .ia-block--placeholder {
     color: var(--color-on-dark-secondary);
     cursor: default;
@@ -233,14 +333,40 @@ const blocks = [
 
   .ia-modal__body h3 {
     font-size: 24px;
-    margin: 0 0 20px;
+    margin: 0 0 8px;
     padding-right: 32px;
+  }
+
+  .ia-modal__body h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-heading-accent);
+    margin: 24px 0 16px;
   }
 
   .ia-modal__body p {
     font-size: 16px;
     color: var(--color-text);
     margin: 0 0 14px;
+  }
+
+  .ia-modal__caption {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--color-text-secondary);
+    margin: 24px 0 10px !important;
+  }
+
+  .ia-modal__images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .ia-modal__images .ia-modal__thumb {
+    width: calc(50% - 6px);
   }
 
   .ia-modal__body ul {
@@ -329,6 +455,10 @@ const blocks = [
       flex-direction: column;
       align-items: flex-start;
       gap: 8px;
+    }
+
+    .ia-modal__images .ia-modal__thumb {
+      width: 100%;
     }
 
     .lightbox {

@@ -196,14 +196,12 @@ const services = [
             savoir <strong>évaluer ses réponses</strong>, et l'alimenter avec
             <strong> des données de qualité</strong>.
           </p>
-          <p>Le vrai danger aujourd'hui, c'est l'illusion de savoir.</p>
           <p>
+            Le vrai danger aujourd'hui, c'est <strong>l'illusion de savoir</strong>.
             On pose une question, la machine répond, et on croit avoir la
-            réponse… alors que ce n'est pas toujours le cas.
-          </p>
-          <p>
-            C'est pour ça que la maîtrise des fondamentaux en copywriting est
-            indispensable pour travailler avec l'IA.
+            bonne réponse… alors que ce n'est pas toujours le cas. C'est pour ça que
+            la maîtrise des fondamentaux en copywriting est indispensable pour
+            travailler avec l'IA.
           </p>
         </div>
         <span>Voir comment j'utilise l'IA dans votre projet →</span>
@@ -534,6 +532,10 @@ const services = [
     color: var(--color-text-secondary);
   }
 
+  .client-card:hover span {
+    text-decoration: underline;
+  }
+
   .ia-intro p {
     font-size: 1.1rem;
     line-height: 1.6;
@@ -574,8 +576,13 @@ const services = [
   }
 
   .ia-card span {
-    font-size: 14px;
-    color: var(--color-on-dark-secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-on-dark);
+  }
+
+  .ia-card:hover span {
+    text-decoration: underline;
   }
 
   .contact-grid {
