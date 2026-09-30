@@ -4,16 +4,12 @@ import ContactForm from "../components/ContactForm.astro";
 import { clients } from "../data/clients";
 
 const services = [
-  "VSL",
-  "Publicités",
-  "Tunnels de vente",
-  "Réseaux sociaux",
-  "Ghostwriting",
-  "E-mailing",
-  "Script YouTube",
-  "Landing page",
-  "Marketing assisté par IA",
   "Stratégie marketing",
+  "Copywriting",
+  "Content marketing",
+  "Ghostwriting",
+  "Acquisition",
+  "IA & automatisation",
 ];
 ---
 
@@ -23,8 +19,9 @@ const services = [
       <span class="hero__kicker">Portfolio de Cédric Deneux</span>
       <h1>Copywriter BtoB<br /> et Bras Droit Marketing</h1>
       <p class="hero__subtitle">
-        J'accompagne les entreprises à clarifier leur message, développer leur
-        visibilité et transformer leur expertise en contenu marketing.
+        Stratégie, copywriting, contenu et IA : j'interviens là où une
+        entreprise a besoin de transformer son expertise en visibilité,
+        prospects et ventes.
       </p>
       <div class="hero__marquee" aria-hidden="true">
         <div class="hero__marquee-track">
@@ -37,7 +34,7 @@ const services = [
         </div>
       </div>
       <span class="sr-only">{services.join(", ")}</span>
-      <a class="btn btn-primary" href="#contact">Réserver un appel</a>
+      <a class="btn btn-primary" href="#contact">Me parler de votre projet</a>
     </div>
   </section>
 
