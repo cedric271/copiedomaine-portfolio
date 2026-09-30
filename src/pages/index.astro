@@ -182,30 +182,28 @@ const services = [
   <section id="ia" class="section-tight">
     <div class="container">
       <h2>Comment j'utilise l'IA pour votre projet</h2>
-      <a class="ia-card" href="/ia">
-        <strong>Workflows, outils et exemples concrets</strong>
-        <div class="ia-intro">
-          <p>
-            L'IA est un outil puissant. Elle permet de travailler beaucoup plus
-            vite, mais ça reste un outil. Et un outil, ça prend quelqu'un derrière
-            pour bien s'en servir.
-          </p>
-          <p>
-            Je l'utilise tous les jours. Pour autant, l'IA seule ne peut pas tout
-            faire. Il faut lui donner <strong>les bonnes instructions</strong>,
-            savoir <strong>évaluer ses réponses</strong>, et l'alimenter avec
-            <strong> des données de qualité</strong>.
-          </p>
-          <p>
-            Le vrai danger aujourd'hui, c'est <strong>l'illusion de savoir</strong>.
-            On pose une question, la machine répond, et on croit avoir la
-            bonne réponse… alors que ce n'est pas toujours le cas. C'est pour ça que
-            la maîtrise des fondamentaux en copywriting est indispensable pour
-            travailler avec l'IA.
-          </p>
-        </div>
-        <span>Voir comment j'utilise l'IA dans votre projet →</span>
-      </a>
+      <p class="ia-subtitle">Workflows, outils et exemples concrets</p>
+      <div class="ia-intro">
+        <p>
+          L'IA est un outil puissant. Elle permet de travailler beaucoup plus
+          vite, mais ça reste un outil. Et un outil, ça prend quelqu'un derrière
+          pour bien s'en servir.
+        </p>
+        <p>
+          Je l'utilise tous les jours. Pour autant, l'IA seule ne peut pas tout
+          faire. Il faut lui donner <strong>les bonnes instructions</strong>,
+          savoir <strong>évaluer ses réponses</strong>, et l'alimenter avec
+          <strong> des données de qualité</strong>.
+        </p>
+        <p>
+          Le vrai danger aujourd'hui, c'est <strong>l'illusion de savoir</strong>.
+          On pose une question, la machine répond, et on croit avoir la
+          bonne réponse… alors que ce n'est pas toujours le cas. C'est pour ça que
+          la maîtrise des fondamentaux en copywriting est indispensable pour
+          travailler avec l'IA.
+        </p>
+      </div>
+      <a class="ia-cta" href="/ia">Voir comment j'utilise l'IA dans votre projet →</a>
     </div>
   </section>
 
@@ -536,10 +534,28 @@ const services = [
     text-decoration: underline;
   }
 
+  #ia .container {
+    text-align: center;
+  }
+
+  .ia-subtitle {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 24px;
+  }
+
+  .ia-intro {
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
   .ia-intro p {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: var(--color-on-dark);
+    color: var(--color-text);
     margin: 0 0 18px;
   }
 
@@ -547,42 +563,22 @@ const services = [
     margin-bottom: 0;
   }
 
-  .ia-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 24px;
-    min-height: 160px;
-    background: var(--color-ink);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: 28px;
-    text-decoration: none;
-    color: var(--color-on-dark);
-    margin-top: 32px;
-    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .ia-card:hover {
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 5px var(--color-accent-glow), 0 16px 32px rgba(19, 42, 19, 0.18);
-    transform: translateY(-6px) scale(1.02);
-  }
-
-  .ia-card strong {
-    font-family: var(--font-heading);
-    font-size: 20px;
-    max-width: 40ch;
-  }
-
-  .ia-card span {
+  .ia-cta {
+    display: block;
+    max-width: 880px;
+    margin: 32px auto 0;
     font-size: 1.1rem;
+    font-weight: 600;
     line-height: 1.6;
-    color: var(--color-on-dark);
+    color: var(--color-text);
+    text-align: left;
+    text-decoration: none;
+    transition: transform 0.2s ease;
   }
 
-  .ia-card:hover span {
+  .ia-cta:hover {
     text-decoration: underline;
+    transform: translateY(-3px);
   }
 
   .contact-grid {
