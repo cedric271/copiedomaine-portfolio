@@ -68,16 +68,72 @@ const services = [
         )}
       </div>
 
-      {client.caseStudy ? (
+      {client.caseStudy?.sections ? (
+        <div class="case-modal__body">
+          {client.caseStudy.sections.map((section) => (
+            <div class={section.spaced ? "case-modal__section case-modal__section--spaced" : "case-modal__section"}>
+              <h4>{section.title}</h4>
+              {section.paragraphs && (
+                <div class="case-modal__actions">
+                  {section.paragraphs.map((paragraph) => <div class="case-modal__action" set:html={paragraph} />)}
+                </div>
+              )}
+              {section.resultBlocks?.map((block) => (
+                <>
+                  {block.text && <p set:html={block.text} />}
+                  {block.images && (
+                    <div class="case-modal__images">
+                      {block.images.map((image) => (
+                        <button
+                          type="button"
+                          class="case-modal__thumb"
+                          data-lightbox-src={image.src}
+                          data-lightbox-alt={image.alt}
+                        >
+                          <img src={image.src} alt={image.alt} loading="lazy" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ))}
+              {section.closing && (
+                <div class="case-modal__actions">
+                  {section.closing.map((paragraph) => <div class="case-modal__action" set:html={paragraph} />)}
+                </div>
+              )}
+              {section.links && (
+                <ul class="case-modal__links">
+                  {section.links.map((link) => (
+                    <li class={link.wide ? "case-modal__links-wide" : ""}>
+                      {link.youtubeId ? (
+                        <button type="button" class="case-modal__link-btn" data-youtube-id={link.youtubeId}>
+                          → {link.label}
+                        </button>
+                      ) : link.url ? (
+                        <a href={link.url} target="_blank" rel="noopener noreferrer">
+                          → {link.label}
+                        </a>
+                      ) : (
+                        <span class="case-modal__links-pending">→ {link.label}</span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      ) : client.caseStudy ? (
         <div class="case-modal__body">
           <div class="case-modal__section">
             <h4>Contexte</h4>
-            {client.caseStudy.context.map((paragraph) => <p>{paragraph}</p>)}
+            {client.caseStudy.context?.map((paragraph) => <p>{paragraph}</p>)}
           </div>
           <div class="case-modal__section">
             <h4>Ce qui a été fait</h4>
             <div class="case-modal__actions">
-              {client.caseStudy.actions.map((action) => <div class="case-modal__action" set:html={action} />)}
+              {client.caseStudy.actions?.map((action) => <div class="case-modal__action" set:html={action} />)}
             </div>
           </div>
           {(client.caseStudy.result || client.caseStudy.resultBlocks) && (
@@ -770,6 +826,38 @@ const services = [
     gap: 6px;
   }
 
+  .case-modal__action :global(p) {
+    margin: 0 0 10px;
+  }
+
+  .case-modal__action :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .case-modal__action :global(blockquote) {
+    margin: 10px 0;
+    padding: 4px 0 4px 16px;
+    border-left: 3px solid var(--color-accent);
+    font-style: italic;
+    color: var(--color-text);
+  }
+
+  .case-modal__action :global(cite) {
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+  }
+
+  .case-modal__action :global(h5) {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--color-heading-accent);
+    margin: 32px 0 0;
+  }
+
   .case-modal__action :global(.action-links) {
     display: flex;
     flex-direction: column;
@@ -802,6 +890,18 @@ const services = [
     margin-top: 24px;
   }
 
+  .case-modal__images + .case-modal__actions {
+    margin-top: 24px;
+  }
+
+  .case-modal__actions + .case-modal__actions {
+    margin-top: 24px;
+  }
+
+  .case-modal__section--spaced {
+    margin-top: 32px;
+  }
+
   .case-modal__links {
     list-style: none;
     margin: 40px 0 0;
@@ -809,6 +909,10 @@ const services = [
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px 20px;
+  }
+
+  .case-modal__actions:has(h5) + .case-modal__links {
+    margin-top: 10px;
   }
 
   .case-modal__links-wide {

@@ -22,16 +22,68 @@ const { client } = Astro.props;
         <h1>{client.name}</h1>
       </div>
 
-      {client.caseStudy ? (
+      {client.caseStudy?.sections ? (
+        <div class="case-body">
+          {client.caseStudy.sections.map((section) => (
+            <div class={section.spaced ? "case-section case-section--spaced" : "case-section"}>
+              <h2>{section.title}</h2>
+              {section.paragraphs && (
+                <div class="case-actions">
+                  {section.paragraphs.map((paragraph) => <div class="case-action" set:html={paragraph} />)}
+                </div>
+              )}
+              {section.resultBlocks?.map((block) => (
+                <>
+                  {block.text && <p set:html={block.text} />}
+                  {block.images && (
+                    <div class="case-images">
+                      {block.images.map((image) => (
+                        <button
+                          type="button"
+                          class="case-thumb"
+                          data-lightbox-src={image.src}
+                          data-lightbox-alt={image.alt}
+                        >
+                          <img src={image.src} alt={image.alt} loading="lazy" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ))}
+              {section.closing && (
+                <div class="case-actions">
+                  {section.closing.map((paragraph) => <div class="case-action" set:html={paragraph} />)}
+                </div>
+              )}
+              {section.links && (
+                <ul class="case-links">
+                  {section.links.map((link) => (
+                    <li class={link.wide ? "case-links-wide" : ""}>
+                      {link.url ? (
+                        <a href={link.url} target="_blank" rel="noopener noreferrer">
+                          → {link.label}
+                        </a>
+                      ) : (
+                        <span class="case-links-pending">→ {link.label}</span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      ) : client.caseStudy ? (
         <div class="case-body">
           <div class="case-section">
             <h2>Contexte</h2>
-            {client.caseStudy.context.map((paragraph) => <p>{paragraph}</p>)}
+            {client.caseStudy.context?.map((paragraph) => <p>{paragraph}</p>)}
           </div>
           <div class="case-section">
             <h2>Ce qui a été fait</h2>
             <div class="case-actions">
-              {client.caseStudy.actions.map((action) => <div class="case-action" set:html={action} />)}
+              {client.caseStudy.actions?.map((action) => <div class="case-action" set:html={action} />)}
             </div>
           </div>
           {(client.caseStudy.result || client.caseStudy.resultBlocks) && (
@@ -197,6 +249,38 @@ const { client } = Astro.props;
     gap: 6px;
   }
 
+  .case-action :global(p) {
+    margin: 0 0 10px;
+  }
+
+  .case-action :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .case-action :global(blockquote) {
+    margin: 10px 0;
+    padding: 4px 0 4px 16px;
+    border-left: 3px solid var(--color-accent);
+    font-style: italic;
+    color: var(--color-text);
+  }
+
+  .case-action :global(cite) {
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+  }
+
+  .case-action :global(h5) {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--color-heading-accent);
+    margin: 32px 0 0;
+  }
+
   .case-action :global(.action-links) {
     display: flex;
     flex-direction: column;
@@ -229,6 +313,18 @@ const { client } = Astro.props;
     margin-top: 24px;
   }
 
+  .case-images + .case-actions {
+    margin-top: 24px;
+  }
+
+  .case-actions + .case-actions {
+    margin-top: 24px;
+  }
+
+  .case-section--spaced {
+    margin-top: 32px;
+  }
+
   .case-links {
     list-style: none;
     margin: 16px 0 0;
@@ -236,6 +332,10 @@ const { client } = Astro.props;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px 20px;
+  }
+
+  .case-actions:has(h5) + .case-links {
+    margin-top: 10px;
   }
 
   .case-links-wide {
