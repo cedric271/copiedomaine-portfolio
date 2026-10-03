@@ -262,14 +262,14 @@ export const clients: Client[] = [
           paragraphs: [
             "CreativMinds est une entreprise de conseil spécialisée dans la transformation digitale.",
             "La cliente avait développé un produit disponible en version physique et digitale, mais n'avait pas encore de véritable stratégie pour le commercialiser en ligne.",
-            "Il fallait donc partir de zéro : structurer l'offre, construire le parcours de vente et commencer à attirer des prospects vers celui-ci.",
+            "Il fallait donc partir de zéro : <strong>structurer l'offre, construire le parcours de vente et commencer à attirer des prospects vers celui-ci.</strong>",
           ],
         },
         {
           title: "La stratégie",
           paragraphs: [
-            "J'ai commencé par retravailler la manière dont le produit était vendu en créant une tiered offer (offre à 3 niveaux), à 69 €, 89 € et 97 €.",
-            "Les trois paliers ont été construits pour augmenter progressivement la valeur perçue et orienter naturellement le choix vers l'offre la plus complète.",
+            "J'ai commencé par retravailler la manière dont le produit était vendu en créant une <strong>tiered offer</strong> (offre à 3 paliers), à 69 €, 89 € et 97 €.",
+            "Les trois paliers ont été construits pour <strong>augmenter progressivement la valeur perçue et orienter naturellement le choix vers l'offre la plus complète.</strong>",
             "Une fois l'offre structurée, nous pouvions construire le parcours permettant de la présenter et de l'acheter directement sur le site.",
           ],
         },
@@ -277,14 +277,14 @@ export const clients: Client[] = [
           title: "L'exécution",
           paragraphs: [
             "J'ai mis en place le parcours de vente complet :",
-            "Landing page → Bon de commande → Page de remerciement → Séquence d'emails post-achat",
+            "<strong>Landing page → Bon de commande → Page de remerciement → Séquence d'emails post-achat</strong>",
             "En parallèle, nous avons développé la visibilité de la fondatrice grâce au ghostwriting sur LinkedIn, avec l'objectif d'attirer de nouveaux prospects vers l'offre.",
           ],
         },
         {
           title: "Les résultats",
           paragraphs: [
-            "En moins d'un mois, le nouveau parcours a généré près de 900 € de ventes, permettant à la cliente de rentabiliser intégralement le coût de ma prestation.",
+            "<strong>En moins d'un mois</strong>, le nouveau parcours a généré près de <strong>900 € de ventes</strong>, permettant à la cliente de <strong>rentabiliser intégralement le coût de ma prestation.</strong>",
           ],
           resultBlocks: [
             {
