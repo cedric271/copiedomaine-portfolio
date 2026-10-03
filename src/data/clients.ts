@@ -40,6 +40,7 @@ export interface Client {
   slug: string;
   name: string;
   description?: string;
+  highlight?: string;
   logo?: string;
   caseStudy?: CaseStudy;
 }
@@ -48,7 +49,8 @@ export const clients: Client[] = [
   {
     slug: "maubius-crm",
     name: "Maubius CRM",
-    description: "CRM IA pour les concessionnaires automobiles.",
+    description: "CRM IA pour concessionnaires automobiles",
+    highlight: "1,4 M+ d'impressions en 6 mois",
     logo: "/logos/maubius-crm.png",
     caseStudy: {
       sections: [
@@ -103,12 +105,13 @@ export const clients: Client[] = [
             "<blockquote>« Oui, ça marche ! Les gens en parlent. L'autre jour pendant l'événement, les gens venaient me voir et savaient tous qui j'étais et ce que je faisais. »</blockquote>",
             "<p>Il ajoutait également :</p>",
             "<blockquote>« On a des leads qui rentrent aussi via la landing page. On a une bonne base de clients intéressés maintenant. »</blockquote><cite>— Christopher Houde, co-fondateur, Maubius</cite>",
+            "<h5>Voir le projet</h5>",
           ],
           links: [
-            { label: "Voir les publications LinkedIn du compte 1", url: "/maubius-crm/publications-linkedin-compte-1" },
-            { label: "Voir les publications LinkedIn du compte 2", url: "/maubius-crm/publications-linkedin-compte-2" },
-            { label: "Voir les pages du site Internet", url: "/maubius-crm/pages-site" },
-            { label: "Voir le site Internet", url: "https://maubius.com/" },
+            { label: "Publications LinkedIn du compte 1", url: "/maubius-crm/publications-linkedin-compte-1" },
+            { label: "Publications LinkedIn du compte 2", url: "/maubius-crm/publications-linkedin-compte-2" },
+            { label: "Pages du site Internet", url: "/maubius-crm/pages-site" },
+            { label: "Site Internet", url: "https://maubius.com/" },
           ],
         },
       ],
@@ -117,7 +120,8 @@ export const clients: Client[] = [
   {
     slug: "groupe-mg-marketing",
     name: "Groupe M&G Marketing",
-    description: "Centre d'appels et organisation de ventes privées dans l'automobile.",
+    description: "Services marketing pour concessionnaires",
+    highlight: "10 000 $ de contrats générés en moins de 2 mois",
     logo: "/logos/groupe-mg-marketing.gif",
     caseStudy: {
       sections: [
@@ -130,7 +134,6 @@ export const clients: Client[] = [
         },
         {
           title: "La stratégie",
-          spaced: true,
           paragraphs: [
             "Nous avons travaillé sur deux fronts : développer la présence de M&G sur les réseaux sociaux, tout en faisant du président de l'entreprise l'un des principaux visages de cette communication.",
             "L'objectif était de publier régulièrement du contenu pour expliquer ce que fait M&G, montrer son expertise et ses résultats sur le terrain, et rester présent dans l'esprit des décideurs du secteur automobile.",
@@ -145,7 +148,6 @@ export const clients: Client[] = [
         },
         {
           title: "Les résultats",
-          spaced: true,
           paragraphs: [
             "Les premiers résultats commerciaux sont arrivés <strong>moins de 2 mois après le lancement de la stratégie</strong>.",
             "<strong>2 nouveaux clients</strong> ont sollicité les services de M&G après avoir vu passer les publications sur les réseaux sociaux.",
@@ -153,16 +155,17 @@ export const clients: Client[] = [
           ],
           closing: [
             "<blockquote>« J'ai eu deux clients aussi qui ont sollicité nos services parce qu'ils ont vu passer les publications. Ça leur a fait penser de travailler avec nous. »</blockquote><cite>— Christopher Houde, Président, Groupe M&G Marketing</cite>",
+            "<h5>Voir le projet</h5>",
           ],
           links: [
-            { label: "Voir les 104 publications", url: "/groupe-mg-marketing/recueil-publications", wide: true },
-            { label: "Voir la vidéo courte 1", youtubeId: "o2OBIcGMs84" },
-            { label: "Voir la vidéo courte 2", youtubeId: "4YcD4S3QINA" },
-            { label: "Voir la vidéo courte 3", youtubeId: "_9z53_mk5qE" },
-            { label: "Voir la vidéo courte 4", youtubeId: "GWt7VGtjZVk" },
-            { label: "Voir la vidéo courte 6", youtubeId: "gbgy5Bp-s4M" },
-            { label: "Voir la vidéo courte 7", youtubeId: "TIBi4tqKeNo" },
-            { label: "Voir la vidéo corporative (à venir)", wide: true },
+            { label: "104 publications", url: "/groupe-mg-marketing/recueil-publications", wide: true },
+            { label: "Vidéo courte 1", youtubeId: "o2OBIcGMs84" },
+            { label: "Vidéo courte 2", youtubeId: "4YcD4S3QINA" },
+            { label: "Vidéo courte 3", youtubeId: "_9z53_mk5qE" },
+            { label: "Vidéo courte 4", youtubeId: "GWt7VGtjZVk" },
+            { label: "Vidéo courte 6", youtubeId: "gbgy5Bp-s4M" },
+            { label: "Vidéo courte 7", youtubeId: "TIBi4tqKeNo" },
+            { label: "Vidéo corporative (à venir)", wide: true },
           ],
         },
       ],
@@ -175,7 +178,8 @@ export const clients: Client[] = [
   {
     slug: "quercus-gestion",
     name: "Quercus Gestion",
-    description: "Cabinet de direction administrative et financière.",
+    description: "Direction administrative et financière externalisée pour PME",
+    highlight: "Écriture d'une VSL call (prise de rendez-vous)",
     logo: "/logos/quercus-gestion.png",
     caseStudy: {
       sections: [
@@ -206,7 +210,8 @@ export const clients: Client[] = [
   {
     slug: "copy-camp",
     name: "Copy House",
-    description: "Formation en copywriting et marketing digital.",
+    description: "Copywriting · Infoprenariat",
+    highlight: "Conception d'un tunnel de vente complet",
     logo: "/logos/copy-camp.jpg",
     caseStudy: {
       sections: [
@@ -247,7 +252,8 @@ export const clients: Client[] = [
   {
     slug: "creativminds",
     name: "CreativMinds",
-    description: "Consulting en transformation digitale et business analyse.",
+    description: "Consulting en transformation digitale",
+    highlight: "Une offre et un parcours de vente rentabilisés dès le premier mois",
     logo: "/logos/creativminds.jpg",
     caseStudy: {
       sections: [
@@ -288,10 +294,11 @@ export const clients: Client[] = [
               ],
             },
           ],
+          closing: ["<h5>Voir le projet</h5>"],
           links: [
-            { label: "Voir la landing page", url: "/case-studies/creativminds/landing-page.html" },
-            { label: "Voir le bon de commande", url: "/case-studies/creativminds/bon-de-commande.html" },
-            { label: "Voir la page de remerciement", url: "/case-studies/creativminds/page-de-remerciement.html" },
+            { label: "Landing page", url: "/case-studies/creativminds/landing-page.html" },
+            { label: "Bon de commande", url: "/case-studies/creativminds/bon-de-commande.html" },
+            { label: "Page de remerciement", url: "/case-studies/creativminds/page-de-remerciement.html" },
           ],
         },
       ],
