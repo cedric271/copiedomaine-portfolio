@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 const blocks = [
   {
     slug: "assistant-marketing-ia",
-    title: "L'assistant marketing IA",
+    title: "Mon assistant marketing IA",
     ready: true,
   },
   {
@@ -14,7 +14,7 @@ const blocks = [
   },
   {
     slug: "claude-projects",
-    title: "Claude Projects",
+    title: "Une IA dédiée au ghostwriting",
     ready: true,
   },
 ];
@@ -51,38 +51,45 @@ const blocks = [
   <dialog id="modal-assistant-marketing-ia" class="ia-modal">
     <button type="button" class="ia-modal__close" data-modal-close aria-label="Fermer">×</button>
     <div class="ia-modal__body">
-      <h3>L'assistant marketing IA</h3>
+      <h3>Mon assistant marketing IA</h3>
+      <h4>Un environnement de travail configuré pour chaque client</h4>
       <p>
-        Pour chaque client, je crée un assistant IA que j'alimente avec tout ce
-        dont il a besoin pour écrire à ma place (ou presque) : le produit et
-        l'offre du client, le persona à qui on s'adresse, ainsi que mes prompts.
+        Pour mes projets de copywriting et de marketing, j'utilise un
+        assistant IA que j'ai construit dans Claude Code.
       </p>
-      <p>Concrètement, il m'aide à :</p>
-      <ul>
-        <li>
-          Structurer et rédiger des pièces de copy, telles que : scripts vidéo,
-          séquences mails, landing pages, publicités, infolettres (newsletter).
-        </li>
-        <li>Analyser une page ou un script de vente</li>
-        <li>Rédiger des articles de blog pour le SEO/GEO</li>
-        <li>Faire de la veille concurrentielle</li>
-      </ul>
+      <p>Mais je ne lui demande pas simplement : « Écris-moi une landing page. »</p>
       <p>
-        C'est un système structuré et non pas un chatbot générique. Il a le
-        contexte de l'entreprise, des méthodes spécifiques par type de contenu,
-        et une bibliothèque des meilleures publications passées pour calibrer
-        le ton à chaque nouvelle production.
+        Pour chaque client, je crée un environnement dédié qui rassemble{" "}
+        <strong>tout le contexte dont l'IA a besoin pour m'assister correctement</strong>{" "}
+        : produit, offres, marché, équipe, concurrents, persona, preuves, ton
+        de voix, contenus passés…
       </p>
-      <p>Voici à quoi ressemble ce système :</p>
+      <p>
+        À cela s'ajoutent mes propres{" "}
+        <strong>méthodes de travail selon le livrable à produire.</strong>
+      </p>
+      <p>
+        L'assistant ne reçoit donc pas les mêmes instructions lorsqu'il
+        travaille sur une landing page, une séquence d'emails, un article
+        SEO/GEO, une publicité ou un script vidéo.
+      </p>
+      <p>
+        <strong>Contexte du client + données du projet + méthode adaptée au livrable.</strong>
+      </p>
+      <p>
+        C'est ce qui me permet d'utiliser l'IA pour accélérer la recherche,
+        l'analyse et la production, sans repartir de zéro à chaque nouvelle
+        tâche.
+      </p>
       <button
         type="button"
         class="ia-modal__thumb"
-        data-lightbox-src="/ia/assistant-marketing-ia.png"
-        data-lightbox-alt="Arborescence de fichiers de l'assistant IA (exemple client Maubius)"
+        data-lightbox-src="/ia/mon-assistant-ia.png"
+        data-lightbox-alt="Mon assistant IA — organisation de l'environnement par client"
       >
         <img
-          src="/ia/assistant-marketing-ia.png"
-          alt="Arborescence de fichiers de l'assistant IA (exemple client Maubius)"
+          src="/ia/mon-assistant-ia.png"
+          alt="Mon assistant IA — organisation de l'environnement par client"
           loading="lazy"
         />
       </button>
@@ -160,27 +167,43 @@ const blocks = [
   <dialog id="modal-claude-projects" class="ia-modal">
     <button type="button" class="ia-modal__close" data-modal-close aria-label="Fermer">×</button>
     <div class="ia-modal__body">
-      <h3>Claude Projects</h3>
+      <h3>Une IA dédiée au ghostwriting</h3>
+      <h4>Écrire pour quelqu'un sans effacer sa personnalité</h4>
       <p>
-        Pour le ghostwriting sur LinkedIn, j'utilise les Projets de Claude.ai
-        comme base de connaissance par personne.
+        Pour le ghostwriting LinkedIn, j'utilise{" "}
+        <strong>un environnement distinct pour chaque personne pour qui j'écris.</strong>
       </p>
       <p>
-        Chaque projet regroupe tout ce qu'il faut pour écrire dans la voix
-        d'un client précis : l'entreprise, le produit, le persona visé,
-        l'audience, et le style propre à la personne pour qui j'écris.
+        Chaque projet est alimenté avec ce dont j'ai besoin pour comprendre
+        la personne derrière le compte : son entreprise, son audience, son
+        persona, ses piliers éditoriaux, sa manière de s'exprimer et ses
+        publications passées.
       </p>
       <p>
-        Une fois le projet configuré, je lui donne mon idée de publication
-        pour écrire plus vite, sans repartir de zéro à chaque fois.
+        J'y ajoute également <strong>mes propres instructions de ghostwriting</strong>{" "}
+        pour cadrer la manière dont l'IA m'assiste.
+      </p>
+      <p>
+        L'objectif n'est pas de lui demander « d'écrire comme un CEO ». C'est
+        de lui donner suffisamment de contexte et d'exemples pour{" "}
+        <strong>respecter la voix propre à chaque dirigeant</strong>, tout en
+        m'aidant à transformer ses idées en publications.
+      </p>
+      <p>
+        Aujourd'hui, j'utilise ce système pour accompagner{" "}
+        <strong>5 comptes LinkedIn différents.</strong>
       </p>
       <button
         type="button"
         class="ia-modal__thumb"
-        data-lightbox-src="/ia/claude-projects.png"
-        data-lightbox-alt="Projets dans Claude.ai"
+        data-lightbox-src="/ia/ia-dediee-ghostwriting.png"
+        data-lightbox-alt="Une IA dédiée au ghostwriting — organisation par dirigeant"
       >
-        <img src="/ia/claude-projects.png" alt="Projets dans Claude.ai" loading="lazy" />
+        <img
+          src="/ia/ia-dediee-ghostwriting.png"
+          alt="Une IA dédiée au ghostwriting — organisation par dirigeant"
+          loading="lazy"
+        />
       </button>
     </div>
   </dialog>
