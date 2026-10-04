@@ -122,7 +122,7 @@ export const clients: Client[] = [
     name: "Groupe M&G Marketing",
     description: "Services marketing pour concessionnaires",
     highlight: "10 000 $ de contrats générés en moins de 2 mois",
-    logo: "/logos/groupe-mg-marketing.gif",
+    logo: "/logos/groupe-mg-marketing.png",
     caseStudy: {
       sections: [
         {
@@ -212,7 +212,7 @@ export const clients: Client[] = [
     name: "Copy House",
     description: "Copywriting · Infoprenariat",
     highlight: "Conception d'un tunnel de vente complet",
-    logo: "/logos/copy-camp.jpg",
+    logo: "/logos/copy-camp.png",
     caseStudy: {
       sections: [
         {
@@ -254,7 +254,7 @@ export const clients: Client[] = [
     name: "CreativMinds",
     description: "Consulting en transformation digitale",
     highlight: "Une offre et un parcours de vente rentabilisés dès le premier mois",
-    logo: "/logos/creativminds.jpg",
+    logo: "/logos/creativminds.png",
     caseStudy: {
       sections: [
         {
