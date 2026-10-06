@@ -2,6 +2,7 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
+import Analytics from "@vercel/analytics/astro";
 import "../styles/global.css";
 
 interface Props {
@@ -34,5 +35,6 @@ const { title, description = "Copywriter BtoB — Cédric, Copiedomaine." } = As
     </main>
     <Footer />
     <WhatsAppButton />
+    <Analytics />
   </body>
 </html>
