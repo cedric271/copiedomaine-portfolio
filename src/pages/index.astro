@@ -235,7 +235,7 @@ const services = [
 
   <section id="ia" class="section-tight">
     <div class="container">
-      <h2>Comment j'utilise l'IA pour votre projet</h2>
+      <h2>Comment j'utilise l'IA pour votre projet ?</h2>
       <div class="ia-intro">
         <p><strong>L'IA accélère mon travail. Elle ne remplace pas mon expertise.</strong></p>
         <p>
@@ -259,7 +259,33 @@ const services = [
           communiquer.</strong>
         </p>
       </div>
-      <a class="ia-cta" href="/ia">→ Voir comment j'utilise concrètement l'IA dans mes projets</a>
+      <a class="ia-cta" href="/ia"><span class="ia-cta__arrow">→</span> Voir comment j'utilise concrètement l'IA dans mes projets</a>
+    </div>
+  </section>
+
+  <section id="about" class="section-tight">
+    <div class="container">
+      <h2>Qui est Cédric ?</h2>
+      <div class="about-intro">
+        <p>
+          <strong>Copywriter quand il faut écrire. Marketeur quand il faut
+          réfléchir avant d'écrire.</strong>
+        </p>
+        <p>
+          Je travaille principalement avec des entreprises BtoB qui ont une
+          vraie expertise, mais pas toujours le temps ou les ressources pour
+          la transformer en marketing.
+        </p>
+        <p>
+          Mon rôle peut donc commencer avant la rédaction : comprendre le
+          marché, trouver les angles, structurer le message, choisir les bons
+          formats, puis produire et mesurer ce qui fonctionne.
+        </p>
+        <p>
+          C'est pour ça que je parle de <strong>bras droit marketing</strong>,
+          et pas uniquement de copywriting.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -388,12 +414,22 @@ const services = [
     background: var(--color-surface);
   }
 
+  #about {
+    background: var(--color-ink);
+  }
+
+  #about h2 {
+    color: var(--color-on-dark);
+  }
+
   #contact {
     background: var(--color-bg);
+    padding-top: 64px;
   }
 
   #travaux h2,
   #ia h2,
+  #about h2,
   #contact h2 {
     text-align: center;
     font-size: 2rem;
@@ -601,6 +637,27 @@ const services = [
     text-align: center;
   }
 
+  #about .container {
+    text-align: center;
+  }
+
+  .about-intro {
+    max-width: 880px;
+    margin: 24px auto 0;
+    text-align: left;
+  }
+
+  .about-intro p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-on-dark);
+    margin: 0 0 18px;
+  }
+
+  .about-intro p:last-child {
+    margin-bottom: 0;
+  }
+
   .ia-intro {
     max-width: 880px;
     margin: 24px auto 0;
@@ -628,12 +685,46 @@ const services = [
     color: var(--color-text);
     text-align: left;
     text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
     transition: transform 0.2s ease;
+  }
+
+  .ia-cta__arrow {
+    display: inline-block;
+    font-size: 2em;
+    line-height: 1;
+    vertical-align: middle;
+    margin-right: 8px;
+    margin-top: -4px;
+    color: var(--color-heading-accent);
+    animation: ia-cta-arrow 1.6s ease-in-out infinite;
+  }
+
+  @keyframes ia-cta-arrow {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(6px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ia-cta__arrow {
+      animation: none;
+    }
   }
 
   .ia-cta:hover {
     text-decoration: underline;
     transform: translateY(-3px);
+  }
+
+  .ia-cta:hover .ia-cta__arrow {
+    animation-play-state: paused;
+    transform: translateX(6px);
   }
 
   .contact-grid {

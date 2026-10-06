@@ -24,7 +24,7 @@ const blocks = [
   <section class="section">
     <div class="container">
       <a class="back-link" href="/#ia">← Retour</a>
-      <h1>Comment j'utilise l'IA pour votre projet</h1>
+      <h1>Comment j'utilise l'IA pour votre projet ?</h1>
       <p class="intro">
         Les outils, workflows et exemples concrets qui font gagner du temps et
         de la qualité dans mes projets de copywriting.
@@ -263,23 +263,24 @@ const blocks = [
 
   .ia-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
 
   .ia-block {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    min-height: 120px;
+    justify-content: center;
+    gap: 12px;
+    aspect-ratio: 1 / 1;
     width: 100%;
     background: var(--color-ink);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    padding: 28px 32px;
+    padding: 28px;
     font: inherit;
-    text-align: left;
+    text-align: center;
     color: var(--color-on-dark);
     cursor: pointer;
     transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
@@ -474,10 +475,8 @@ const blocks = [
   }
 
   @media (max-width: 640px) {
-    .ia-block {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
+    .ia-grid {
+      grid-template-columns: 1fr;
     }
 
     .ia-modal__images .ia-modal__thumb {
